@@ -1,5 +1,6 @@
 namespace TelerikKindergarten.SQL.Model
 {
+    using MongoDB.Bson.Serialization.Attributes;
     using System;
     using System.Collections.Generic;
     using System.ComponentModel.DataAnnotations;
@@ -8,6 +9,7 @@ namespace TelerikKindergarten.SQL.Model
 
     public partial class Child
     {
+        [BsonIgnore]
         public int ChildID { get; set; }
 
         [Required]
@@ -30,8 +32,10 @@ namespace TelerikKindergarten.SQL.Model
         [Column(TypeName = "date")]
         public DateTime? ConclusionDate { get; set; }
 
+        [BsonIgnore]
         public int GroupID { get; set; }
 
+        [BsonIgnore]
         public virtual Group Group { get; set; }
     }
 }

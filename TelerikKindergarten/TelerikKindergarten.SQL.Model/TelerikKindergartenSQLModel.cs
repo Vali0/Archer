@@ -21,6 +21,10 @@ namespace TelerikKindergarten.SQL.Model
         public virtual DbSet<Employee> Employees { get; set; }
         public virtual DbSet<Group> Groups { get; set; }
 
+        public virtual DbSet<Producer> Producers { get; set; }
+
+        public virtual DbSet<Product> Products { get; set; }
+
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             modelBuilder.Entity<Asset>()

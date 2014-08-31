@@ -1,5 +1,6 @@
 namespace TelerikKindergarten.SQL.Model
 {
+    using MongoDB.Bson.Serialization.Attributes;
     using System;
     using System.Collections.Generic;
     using System.ComponentModel.DataAnnotations;
@@ -14,6 +15,7 @@ namespace TelerikKindergarten.SQL.Model
             Employees1 = new HashSet<Employee>();
         }
 
+        [BsonIgnore]
         public int EmployeeID { get; set; }
 
         [Required]
@@ -27,16 +29,22 @@ namespace TelerikKindergarten.SQL.Model
         [StringLength(50)]
         public string LastName { get; set; }
 
+        [BsonIgnore]
         public int? ManagerID { get; set; }
 
+        [BsonIgnore]
         public int? DepartmentID { get; set; }
 
+        [BsonIgnore]
         public virtual Department Department { get; set; }
 
+        [BsonIgnore]
         public virtual ICollection<Group> Groups { get; set; }
 
+        [BsonIgnore]
         public virtual ICollection<Employee> Employees1 { get; set; }
 
+        [BsonIgnore]
         public virtual Employee Employee1 { get; set; }
     }
 }

@@ -1,4 +1,4 @@
-namespace TelerikKindergarten.SQL.Model
+﻿namespace TelerikKindergarten.SQL.Model
 {
     using MongoDB.Bson.Serialization.Attributes;
     using System;
@@ -7,21 +7,18 @@ namespace TelerikKindergarten.SQL.Model
     using System.ComponentModel.DataAnnotations.Schema;
     using System.Data.Entity.Spatial;
 
-    public partial class AssetType
+    public partial class Product
     {
-        public AssetType()
-        {
-            Assets = new HashSet<Asset>();
-        }
-
         [BsonIgnore]
-        public int AssetTypeID { get; set; }
+        public int ProductId { get; set; }
 
-        [Required]
-        [StringLength(50)]
         public string Name { get; set; }
 
+        public decimal? Price { get; set; }
+
+        public int Quantity { get; set; }
+
         [BsonIgnore]
-        public virtual ICollection<Asset> Assets { get; set; }
+        public virtual Producer Producer { get; set; }
     }
 }

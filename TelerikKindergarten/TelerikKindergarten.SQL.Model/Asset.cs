@@ -1,5 +1,6 @@
 namespace TelerikKindergarten.SQL.Model
 {
+    using MongoDB.Bson.Serialization.Attributes;
     using System;
     using System.Collections.Generic;
     using System.ComponentModel.DataAnnotations;
@@ -8,10 +9,13 @@ namespace TelerikKindergarten.SQL.Model
 
     public partial class Asset
     {
+        [BsonIgnore]
         public int AssetID { get; set; }
 
+        [BsonIgnore]
         public int AssetTypeID { get; set; }
 
+        [BsonIgnore]
         public int? DepartmentID { get; set; }
 
         [Column(TypeName = "money")]
@@ -22,6 +26,7 @@ namespace TelerikKindergarten.SQL.Model
 
         public virtual AssetType AssetType { get; set; }
 
+        [BsonIgnore]
         public virtual Department Department { get; set; }
     }
 }
