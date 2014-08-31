@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TelerikKindergarten.SQL.Mod
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TelerikKindergarten.ConsoleClient", "TelerikKindergarten.ConsoleClient\TelerikKindergarten.ConsoleClient.csproj", "{C28A9E50-3063-42CD-B88A-FCC18970D677}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TelerikKindergarten.ReportsManipulation", "TelerikKindergarten.ReportsManipulation\TelerikKindergarten.ReportsManipulation.csproj", "{84D3A775-2CCE-44CA-B2D2-4DE229CF19E4}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{C28A9E50-3063-42CD-B88A-FCC18970D677}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C28A9E50-3063-42CD-B88A-FCC18970D677}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C28A9E50-3063-42CD-B88A-FCC18970D677}.Release|Any CPU.Build.0 = Release|Any CPU
+		{84D3A775-2CCE-44CA-B2D2-4DE229CF19E4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{84D3A775-2CCE-44CA-B2D2-4DE229CF19E4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{84D3A775-2CCE-44CA-B2D2-4DE229CF19E4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{84D3A775-2CCE-44CA-B2D2-4DE229CF19E4}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
