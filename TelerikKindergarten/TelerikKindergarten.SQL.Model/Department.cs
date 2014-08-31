@@ -26,6 +26,11 @@ namespace TelerikKindergarten.SQL.Model
         [StringLength(50)]
         public string Name { get; set; }
 
+        [BsonIgnore]
+        public int EmployeeId { get; set; }
+
+        public virtual Employee DepartmentHead { get; set; }
+
         public virtual ICollection<Asset> Assets { get; set; }
 
         public virtual ICollection<Employee> Employees { get; set; }
