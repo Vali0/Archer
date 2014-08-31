@@ -4,12 +4,14 @@ namespace TelerikKindergarten.SQL.Model
     using System.Data.Entity;
     using System.ComponentModel.DataAnnotations.Schema;
     using System.Linq;
+    using TelerikKindergarten.SQL.Model.Migrations;
 
     public partial class TelerikKindergartenSQLModel : DbContext
     {
         public TelerikKindergartenSQLModel()
             : base("name=TelerikKindergartenSQLModel")
         {
+            Database.SetInitializer<TelerikKindergartenSQLModel>(new MigrateDatabaseToLatestVersion<TelerikKindergartenSQLModel, Configuration>());
         }
 
         public virtual DbSet<Asset> Assets { get; set; }
