@@ -21,7 +21,5 @@
         public string Location { get; set; }
 
         public decimal Sum { get; set; }
-
-        public decimal TotalSum { get; set; }
     }
 }
