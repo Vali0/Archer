@@ -2,6 +2,8 @@
 {
     using System;
     using System.Collections.Generic;
+    using System.Data;
+    using System.Data.OleDb;
     using System.IO;
     using System.IO.Compression;
     using System.Linq;
@@ -33,6 +35,33 @@
             }
         }
 
+        public static void ReadExcelFiles(string filePath)
+        {
+            string connectionString = @"Provider=Microsoft.ACE.OLEDB.12.0;Data Source=" + filePath + @"; Extended Properties=""Excel 12.0 Xml;HDR=YES;""";
+
+            OleDbConnection xlsConnection = new OleDbConnection(connectionString);
+            xlsConnection.Open();
+
+            using (xlsConnection)
+            {
+                var dataTable = new DataTable();
+                var adapter = new OleDbDataAdapter("SELECT * FROM [Sheet1$]", xlsConnection);
+                adapter.Fill(dataTable);
+
+                string title = dataTable.Rows[0].ItemArray[0].ToString();
+                Console.WriteLine(title);
+
+                for (int i = 2; i < dataTable.Rows.Count - 1; i++)
+                {
+                    DataRow row = dataTable.Rows[i];
+
+                    string product = row.ItemArray[0].ToString();
+                    string producer = row.ItemArray[1].ToString();
+                    Console.WriteLine(product + " -> " + producer);
+                }
+            }
+
+        }
 
         public List<XmlReportViewModel> ReadXML(string filePath)
         {
