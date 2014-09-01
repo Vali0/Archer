@@ -9,35 +9,44 @@
     using System.Text;
     using System.Threading.Tasks;
 
+    using ReportModels;
+
     public class ExportReports
     {
-        public static void CreatePdfReport()
+        public static void CreatePdfReport(List<PdfReportViewModel> reports)
         {
             Document document = new Document();
 
             Section section = document.AddSection();
             var table = section.AddTable();
-            var column = table.AddColumn("5cm");
-            column = table.AddColumn("2cm");
+            table.Borders.Visible = true;
+            var rowHeader = table.AddRow(); 
 
-            var row = table.AddRow();
-            row.Cells[0].AddParagraph("Name");
-            row.Cells[1].AddParagraph("Age");
-            row.Cells[0].Borders.Visible = true;
-            row.Cells[1].Borders.Visible = true;
+            for (int i = 0; i < 7; i++)
+            {
+                table.AddColumn("3cm");
+                //rowHeader.Cells[i].Borders.Visible = true;
+            }
 
-            var firstRow = table.AddRow();
-            firstRow.Cells[0].AddParagraph("Pesho");
-            firstRow.Cells[1].AddParagraph("12");
-            firstRow.Cells[0].Borders.Visible = true;
-            firstRow.Cells[1].Borders.Visible = true;
+            rowHeader.Cells[0].AddParagraph("Product name");
+            rowHeader.Cells[1].AddParagraph("Producer");
+            rowHeader.Cells[2].AddParagraph("Quantity");
+            rowHeader.Cells[3].AddParagraph("Price");
+            rowHeader.Cells[4].AddParagraph("Location");
+            rowHeader.Cells[5].AddParagraph("Sum");
+            rowHeader.Cells[6].AddParagraph("Date");
 
-            var secondRow = table.AddRow();
-            secondRow.Cells[0].AddParagraph("Gosho");
-            secondRow.Cells[1].AddParagraph("50");
-            secondRow.Cells[0].Borders.Visible = true;
-            secondRow.Cells[1].Borders.Visible = true;
-
+            foreach (var rep in reports)
+            {
+                var row = table.AddRow();
+                row.Cells[0].AddParagraph(rep.ProductName);
+                row.Cells[1].AddParagraph(rep.Producer);
+                row.Cells[2].AddParagraph(rep.Quantity.ToString());
+                row.Cells[3].AddParagraph(rep.Price.ToString());
+                row.Cells[4].AddParagraph(rep.Location);
+                row.Cells[5].AddParagraph(rep.Sum.ToString());
+                row.Cells[6].AddParagraph(rep.Date.ToString());
+            }
 
             PdfDocumentRenderer renderer = new PdfDocumentRenderer(true, PdfSharp.Pdf.PdfFontEmbedding.Always);
             renderer.Document = document;

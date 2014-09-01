@@ -9,6 +9,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TelerikKindergarten.Console
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TelerikKindergarten.ReportsManipulation", "TelerikKindergarten.ReportsManipulation\TelerikKindergarten.ReportsManipulation.csproj", "{84D3A775-2CCE-44CA-B2D2-4DE229CF19E4}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TelerikKindergarten.ReportModels", "TelerikKindergarten.ReportModels\TelerikKindergarten.ReportModels.csproj", "{2ABA1941-B314-44E5-A2AF-1512AC9DD450}"
+EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TelerikKindergarten.SQLite.Model", "TelerikKindergarten.SQLite.Model\TelerikKindergarten.SQLite.Model.csproj", "{23D09080-CF4F-402A-B3F3-3329D36FBCEE}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TelerikKindergarten.Data", "TelerikKindergarten.Data\TelerikKindergarten.Data.csproj", "{4999C11D-3E95-4F2F-8972-DE3D5CA149E2}"
@@ -31,6 +33,10 @@ Global
 		{84D3A775-2CCE-44CA-B2D2-4DE229CF19E4}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{84D3A775-2CCE-44CA-B2D2-4DE229CF19E4}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{84D3A775-2CCE-44CA-B2D2-4DE229CF19E4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2ABA1941-B314-44E5-A2AF-1512AC9DD450}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2ABA1941-B314-44E5-A2AF-1512AC9DD450}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2ABA1941-B314-44E5-A2AF-1512AC9DD450}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2ABA1941-B314-44E5-A2AF-1512AC9DD450}.Release|Any CPU.Build.0 = Release|Any CPU
 		{23D09080-CF4F-402A-B3F3-3329D36FBCEE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{23D09080-CF4F-402A-B3F3-3329D36FBCEE}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{23D09080-CF4F-402A-B3F3-3329D36FBCEE}.Release|Any CPU.ActiveCfg = Release|Any CPU
