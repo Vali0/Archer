@@ -1,12 +1,13 @@
-namespace TelerikKindergarten.SQL.Model
+namespace TelerikKindergarten.Data
 {
     using System;
     using System.Data.Entity;
     using System.ComponentModel.DataAnnotations.Schema;
     using System.Linq;
-    using TelerikKindergarten.SQL.Model.Migrations;
+    using TelerikKindergarten.Data.Migrations;
+    using TelerikKindergarten.SQL.Model;
 
-    public partial class TelerikKindergartenSQLModel : DbContext
+    public partial class TelerikKindergartenSQLModel : DbContext, ITelerikKindergartenContext
     {
         public TelerikKindergartenSQLModel()
             : base("name=TelerikKindergartenSQLModel")
@@ -14,16 +15,16 @@ namespace TelerikKindergarten.SQL.Model
             Database.SetInitializer<TelerikKindergartenSQLModel>(new MigrateDatabaseToLatestVersion<TelerikKindergartenSQLModel, Configuration>());
         }
 
-        public virtual DbSet<Asset> Assets { get; set; }
-        public virtual DbSet<AssetType> AssetTypes { get; set; }
-        public virtual DbSet<Child> Children { get; set; }
-        public virtual DbSet<Department> Departments { get; set; }
-        public virtual DbSet<Employee> Employees { get; set; }
-        public virtual DbSet<Group> Groups { get; set; }
+        public virtual IDbSet<Asset> Assets { get; set; }
+        public virtual IDbSet<AssetType> AssetTypes { get; set; }
+        public virtual IDbSet<Child> Children { get; set; }
+        public virtual IDbSet<Department> Departments { get; set; }
+        public virtual IDbSet<Employee> Employees { get; set; }
+        public virtual IDbSet<Group> Groups { get; set; }
 
-        public virtual DbSet<Producer> Producers { get; set; }
+        public virtual IDbSet<Producer> Producers { get; set; }
 
-        public virtual DbSet<Product> Products { get; set; }
+        public virtual IDbSet<Product> Products { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
@@ -59,6 +60,17 @@ namespace TelerikKindergarten.SQL.Model
                 .HasMany(e => e.Children)
                 .WithRequired(e => e.Group)
                 .WillCascadeOnDelete(false);
+        }
+
+
+        public new IDbSet<T> Set<T>() where T : class
+        {
+            return base.Set<T>();
+        }
+
+        public new void SaveChanges()
+        {
+            base.SaveChanges();
         }
     }
 }
