@@ -19,25 +19,26 @@
             var context = new TelerikKindergartenSQLModel();
             context.Employees.Add(employee);   
 
-            string mongoConnectionString = "mongodb://localhost";
+            // Mongodb seeding
+            //string mongoConnectionString = "mongodb://localhost";
 
-            SeedMongoDb(mongoConnectionString);
+            //SeedMongoDb(mongoConnectionString);
 
             // Get data from the base.
-            var client = new MongoClient(mongoConnectionString);
-            var server = client.GetServer();
-            var database = server.GetDatabase("test");
+            //var client = new MongoClient(mongoConnectionString);
+            //var server = client.GetServer();
+            //var database = server.GetDatabase("test");
 
-            var producers = database.GetCollection<Producer>("producers");
+            //var producers = database.GetCollection<Producer>("producers");
 
-            //You can just use AsQueryable to get all of them, or use Linq after. Not all Linq commands are supported!
-            var producersForTransfer = producers.AsQueryable<Producer>()
-              .Where(p => p.Products.Any()).OrderBy(pr => pr.Name);
+            ////You can just use AsQueryable to get all of them, or use Linq after. Not all Linq commands are supported!
+            //var producersForTransfer = producers.AsQueryable<Producer>()
+            //  .Where(p => p.Products.Any()).OrderBy(pr => pr.Name);
 
-            foreach (var producer in producersForTransfer)
-            {
-                Console.WriteLine(producer.Name);
-            }
+            //foreach (var producer in producersForTransfer)
+            //{
+            //    Console.WriteLine(producer.Name);
+            //}
         }
 
         private static void SeedMongoDb(string connectionString)
