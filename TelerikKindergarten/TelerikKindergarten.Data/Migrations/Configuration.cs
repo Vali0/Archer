@@ -1,4 +1,4 @@
-namespace TelerikKindergarten.SQL.Model.Migrations
+namespace TelerikKindergarten.Data.Migrations
 {
     using System;
     using System.Data.Entity;

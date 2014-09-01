@@ -13,6 +13,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TelerikKindergarten.ReportM
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TelerikKindergarten.SQLite.Model", "TelerikKindergarten.SQLite.Model\TelerikKindergarten.SQLite.Model.csproj", "{23D09080-CF4F-402A-B3F3-3329D36FBCEE}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TelerikKindergarten.Data", "TelerikKindergarten.Data\TelerikKindergarten.Data.csproj", "{4999C11D-3E95-4F2F-8972-DE3D5CA149E2}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -39,6 +41,10 @@ Global
 		{23D09080-CF4F-402A-B3F3-3329D36FBCEE}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{23D09080-CF4F-402A-B3F3-3329D36FBCEE}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{23D09080-CF4F-402A-B3F3-3329D36FBCEE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4999C11D-3E95-4F2F-8972-DE3D5CA149E2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4999C11D-3E95-4F2F-8972-DE3D5CA149E2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4999C11D-3E95-4F2F-8972-DE3D5CA149E2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4999C11D-3E95-4F2F-8972-DE3D5CA149E2}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

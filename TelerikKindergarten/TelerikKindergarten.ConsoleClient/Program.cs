@@ -10,13 +10,14 @@
     using MongoDB.Driver.Linq;
 
     using TelerikKindergarten.SQL.Model;
+    using TelerikKindergarten.Data;
 
     public class Program
     {
         public static void Main(string[] args)
         {
             var employee = new Employee() { FirstName = "Ivancho" };
-            var context = new TelerikKindergartenSQLModel();
+            var context = new TelerikKindergartenData();
             context.Employees.Add(employee);   
 
             // Mongodb seeding
