@@ -17,7 +17,7 @@
     {
         public static void Main(string[] args)
         {
-            //UpdateMySql();
+            UpdateMySql();
 
 
 
@@ -56,6 +56,9 @@
                                                     .Where(e => e.Employees.Any());
 
             var employeesForTransfer = AddEmployees(departmentsForTransfer);
+
+
+
 
             //foreach (var department in departmentsForTransfer)
             //{
