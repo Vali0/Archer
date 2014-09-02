@@ -9,6 +9,7 @@
     using MongoDB.Driver.Linq;
     using TelerikKindergarten.SQL.Model;
     using TelerikKindergarten.Data;
+    using TelerikKindergarten.ReportsManipulation;
 
     public class Program
     {
@@ -16,7 +17,7 @@
         {
             var employee = new Employee() { FirstName = "Ivancho" };
             var context = new TelerikKindergartenData();
-            context.Employees.Add(employee);   
+            context.Employees.Add(employee);
 
             //Mongodb seeding
             string mongoConnectionString = "mongodb://localhost";
@@ -39,6 +40,17 @@
             {
                 Console.WriteLine(producer.Name);
             }
+
+
+            //Test Extracts from ZIPs 
+            //var list = ImportReports.GetExcelReports(@"C:\Users\M.Tonkov\Desktop\test", "Excel import reports.zip"); int i = 1;
+            //foreach (var item in list)
+            //{
+            //    Console.WriteLine(item.InvoiceTitle);
+            //    Console.WriteLine(i++);
+            //    Console.WriteLine(item.Product + "  " + item.Producer);
+            //    Console.WriteLine();
+            //}
         }
 
         private static void SeedMongoDb(string connectionString)

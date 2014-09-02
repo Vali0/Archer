@@ -39,6 +39,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ExcelReportViewModel.cs" />
     <Compile Include="JSONReportViewModel.cs" />
     <Compile Include="PdfReportViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

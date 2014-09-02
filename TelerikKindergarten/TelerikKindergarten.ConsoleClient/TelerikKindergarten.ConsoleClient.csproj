@@ -68,6 +68,10 @@
       <Project>{4999c11d-3e95-4f2f-8972-de3d5ca149e2}</Project>
       <Name>TelerikKindergarten.Data</Name>
     </ProjectReference>
+    <ProjectReference Include="..\TelerikKindergarten.ReportModels\TelerikKindergarten.ReportModels.csproj">
+      <Project>{2aba1941-b314-44e5-a2af-1512ac9dd450}</Project>
+      <Name>TelerikKindergarten.ReportModels</Name>
+    </ProjectReference>
     <ProjectReference Include="..\TelerikKindergarten.ReportsManipulation\TelerikKindergarten.ReportsManipulation.csproj">
       <Project>{84d3a775-2cce-44ca-b2d2-4de229cf19e4}</Project>
       <Name>TelerikKindergarten.ReportsManipulation</Name>
