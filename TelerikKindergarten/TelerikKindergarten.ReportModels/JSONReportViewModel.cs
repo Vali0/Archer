@@ -12,7 +12,7 @@
 
         public string ProductName { get; set; }
 
-        public string Producer { get; set; }
+        public string ProducerName { get; set; }
 
         public long TotalQuantitySold { get; set; }
 
