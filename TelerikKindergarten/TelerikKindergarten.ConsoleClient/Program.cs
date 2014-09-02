@@ -9,11 +9,18 @@
     using MongoDB.Driver.Linq;
     using TelerikKindergarten.SQL.Model;
     using TelerikKindergarten.Data;
+    using TelerikKindergarten.MySQL.Data;
+    using TelerikKindergarten.ReportModels;
+    using Telerik.OpenAccess;
 
     public class Program
     {
         public static void Main(string[] args)
         {
+            //UpdateMySql();
+
+
+
             //var employee = new Employee() { FirstName = "Ivancho" };
             var context = new TelerikKindergartenData();
             //context.Employees.Add(employee);
@@ -52,7 +59,7 @@
 
             //foreach (var department in departmentsForTransfer)
             //{
-                
+
             //    context.Departments.Add(new Department()
             //    {
             //        Name = department.Name,
@@ -80,7 +87,7 @@
             //        //SupervisorID = 1
             //    });
             //}
-            
+
 
             //foreach (var product in products)
             //{
@@ -211,6 +218,25 @@
             }
 
             return employees;
+        }
+
+        private static void UpdateMySql()
+        {
+            using (var context = new TelerikKindergartenMySQLModel())
+            {
+                var schemaHandler = context.GetSchemaHandler();
+                MySqlUtilities.EnsureDB(schemaHandler);
+
+                //// this is how you add the reports. This is an example, should be made separate.
+               // context.Add(new JSONReportViewModel() { ProducerName = "ICO", ProductId = 2, ProductName = "Chair", TotalIncomes = 22, TotalQuantitySold = 300 });
+
+                //// get the reports
+
+
+                //context.SaveChanges();
+                //Console.WriteLine(context.Reports.Where(r => true).First().ProducerName);
+
+            }
         }
     }
 }
