@@ -14,14 +14,14 @@
     {
         public static void Main(string[] args)
         {
-            var employee = new Employee() { FirstName = "Ivancho" };
+            //var employee = new Employee() { FirstName = "Ivancho" };
             var context = new TelerikKindergartenData();
-            context.Employees.Add(employee);   
+            //context.Employees.Add(employee);
 
             //Mongodb seeding
             string mongoConnectionString = "mongodb://localhost";
 
-            SeedMongoDb(mongoConnectionString);
+            //SeedMongoDb(mongoConnectionString);
 
             //Get data from the base.
             var client = new MongoClient(mongoConnectionString);
@@ -35,10 +35,73 @@
                                                 .Where(p => p.Products.Any())
                                                 .OrderBy(pr => pr.Name);
 
-            foreach (var producer in producersForTransfer)
-            {
-                Console.WriteLine(producer.Name);
-            }
+
+
+            var products = AddProducts(producersForTransfer);
+
+            var groups = database.GetCollection<Group>("groups");
+            var groupsForTransfer = groups.AsQueryable<Group>()
+                                          .Where(c => c.Children.Any())
+                                          .OrderBy(ch => ch.Name);
+
+            var departments = database.GetCollection("departments");
+            var departmentsForTransfer = departments.AsQueryable<Department>()
+                                                    .Where(e => e.Employees.Any());
+
+            var employeesForTransfer = AddEmployees(departmentsForTransfer);
+
+            //foreach (var department in departmentsForTransfer)
+            //{
+                
+            //    context.Departments.Add(new Department()
+            //    {
+            //        Name = department.Name,
+            //        EmployeeId = department.EmployeeId,
+            //        //DepartmentHead = department.DepartmentHead
+            //    });
+            //}
+
+            //foreach (var employee in employeesForTransfer)
+            //{
+            //    context.Employees.Add(new Employee()
+            //    {
+            //        FirstName = employee.MiddleName,
+            //        MiddleName = employee.MiddleName,
+            //        LastName = employee.MiddleName
+            //    });
+            //}
+
+            //foreach (var group in groupsForTransfer)
+            //{
+            //    context.Groups.Add(new Group()
+            //    {
+            //        Name = group.Name,
+            //        Notes = group.Notes,
+            //        //SupervisorID = 1
+            //    });
+            //}
+            
+
+            //foreach (var product in products)
+            //{
+            //    context.Products.Add(new Product()
+            //    {
+            //        Name = product.Name,
+            //        Price = product.Price,
+            //        Quantity = product.Quantity,
+            //        ProductId = product.Producer.ProducerId // Check why null
+            //    });
+            //}
+
+            //foreach (var producer in producersForTransfer)
+            //{
+            //    context.Producers.Add(new Producer()
+            //    {
+            //        Name = producer.Name
+            //    });
+            //}
+
+            context.SaveChanges();
         }
 
         private static void SeedMongoDb(string connectionString)
@@ -110,7 +173,7 @@
                 for (int i = 0; i < 30; i++)
                 {
                     var currentProduct = new Product() { Name = "Product " + currentProducer.Name + " " + i, Price = i, Quantity = i * 10 };
-                    
+
                     currentProducer.Products.Add(currentProduct);
                 }
 
@@ -118,7 +181,7 @@
             }
         }
 
-        private static ICollection<Product> Add(ICollection<Producer> producers)
+        private static ICollection<Product> AddProducts(IQueryable<Producer> producers)
         {
             var products = new List<Product>();
 
@@ -132,6 +195,22 @@
             }
 
             return products;
+        }
+
+        private static ICollection<Employee> AddEmployees(IQueryable<Department> departments)
+        {
+            var employees = new List<Employee>();
+
+            foreach (var department in departments)
+            {
+                foreach (var employee in department.Employees)
+                {
+                    employee.Department = department;
+                    employees.Add(employee);
+                }
+            }
+
+            return employees;
         }
     }
 }
