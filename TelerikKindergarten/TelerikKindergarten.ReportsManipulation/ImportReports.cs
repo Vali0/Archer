@@ -35,7 +35,13 @@
 
                 allReportsFromExcel.AddRange(dataFromSingleFile);
             }
-            
+
+            string[] foldersToDelete = Directory.GetDirectories(pathToZipFile);
+            for (int i = 0; i < foldersToDelete.Length; i++)
+            {
+                Directory.Delete(foldersToDelete[i], true);
+            } 
+
             return allReportsFromExcel;
         }
 
