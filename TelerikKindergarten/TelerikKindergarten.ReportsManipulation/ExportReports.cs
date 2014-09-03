@@ -12,6 +12,7 @@
     using ReportModels;
     using Newtonsoft.Json;
     using System.IO;
+    using System.Data.OleDb;
 
     public class ExportReports
     {
@@ -74,5 +75,39 @@
                 }
             }
         }
+
+        public static void CreateExcelFile(IEnumerable<ExcelReportViewModel> dataToExport, string filePath)
+        {
+            string connectionString = @"Provider=Microsoft.ACE.OLEDB.12.0;Data Source=" + filePath + "\\ExcelReport.xlsx" + @"; Extended Properties=""Excel 12.0 Xml;HDR=YES;""";
+
+            OleDbConnection xlsConnection = new OleDbConnection(connectionString);
+            xlsConnection.Open();
+
+
+            using (xlsConnection)
+            {
+                OleDbCommand cmd = new OleDbCommand("CREATE TABLE [Sheet1] ([Product] string, [Producer] string, [Invoice] string, [Department] string, [Quantity] int, [UnitPrice] int, [TotalPrice] decimal)", xlsConnection);
+                cmd.ExecuteNonQuery();
+
+                foreach (var data in dataToExport)
+                {
+                    OleDbCommand command = new OleDbCommand(
+                        "INSERT INTO [Sheet1$] (Product, Producer, Invoice, Department, Quantity, UnitPrice, TotalPrice) " +
+                                       "VALUES(@product, @producer, @invoice, @department, @quantity, @unitPrice, @totalPrice)", xlsConnection);
+
+                    command.Parameters.AddWithValue("@product", data.Product);
+                    command.Parameters.AddWithValue("@producer", data.Producer);
+                    command.Parameters.AddWithValue("@invoice", data.InvoiceTitle);
+                    command.Parameters.AddWithValue("@department", data.Department);
+                    command.Parameters.AddWithValue("@quantity", data.Quantity);
+                    command.Parameters.AddWithValue("@unitPrice", data.UnitPrice);
+                    command.Parameters.AddWithValue("@totalPrice", data.TotalPrice);
+
+                    command.ExecuteNonQuery();
+
+                }
+            }
+        }
+
     }
 }
