@@ -5,14 +5,13 @@
     using System.Linq;
     using System.Text;
     using System.Threading.Tasks;
-    using MongoDB.Driver;
-    using MongoDB.Driver.Linq;
     using TelerikKindergarten.SQL.Model;
     using TelerikKindergarten.Data;
     using TelerikKindergarten.MySQL.Data;
     using TelerikKindergarten.ReportModels;
     using Telerik.OpenAccess;
     using TelerikKindergarten.SQLite.Data;
+    using MongoDB.Driver;
 
     public class Program
     {
@@ -43,169 +42,17 @@
             // Excel data
             ExcelManipulator.Export();
 
-
-
-
-
-
-            //UpdateMySql();
-
-            //var employee = new Employee() { FirstName = "Ivancho" };
-            var context = new TelerikKindergartenData();
-            //context.Employees.Add(employee);
-
             //Mongodb seeding
             string mongoConnectionString = "mongodb://localhost";
-
-            //SeedMongoDb(mongoConnectionString);
-
             //Get data from the base.
             var client = new MongoClient(mongoConnectionString);
             var server = client.GetServer();
             var database = server.GetDatabase("test");
+            //SeedMongoDb(mongoConnectionString);
 
-            var producers = database.GetCollection<Producer>("producers");
-
-            //You can just use AsQueryable to get all of them, or use Linq after. Not all Linq commands are supported!
-            var producersForTransfer = producers.AsQueryable<Producer>()
-                                                .Where(p => p.Products.Any())
-                                                .OrderBy(pr => pr.Name);
-
-
-
-            var products = AddProducts(producersForTransfer);
-
-            var groups = database.GetCollection<Group>("groups");
-            var groupsForTransfer = groups.AsQueryable<Group>()
-                                          .Where(c => c.Children.Any())
-                                          .OrderBy(ch => ch.Name);
-
-            var departments = database.GetCollection("departments");
-            var departmentsForTransfer = departments.AsQueryable<Department>()
-                                                    .Where(e => e.Employees.Any())
-                                                    .Where(a => a.Assets.Any());
-
-            var employeesForTransfer = AddEmployees(departmentsForTransfer);
-
-
-            var assetsForTransfer = AddAssets(departmentsForTransfer);
-
-            var assetTypesForTransfer = AddAssetTypes(assetsForTransfer);
-
-            var childrenForTransfer = AddChildren(groupsForTransfer);
-
-            //foreach (var child in childrenForTransfer)
-            //{
-            //    context.Children.Add(new Child()
-            //    {
-            //        FirstName = child.LastName,
-            //        MiddleName = child.LastName,
-            //        LastName = child.LastName,
-            //        Address = child.Address,
-            //        AdmissionDate = child.AdmissionDate,
-            //        ConclusionDate = child.ConclusionDate,
-            //        GroupID = 10
-            //    });
-            //}
-
-            //foreach (var assetType in assetTypesForTransfer)
-            //{
-            //    context.AssetTypes.Add(new AssetType()
-            //    {
-            //        Name = assetType.Name
-            //    });
-            //}
-
-            //foreach (var asset in assetsForTransfer)
-            //{
-            //    context.Assets.Add(new Asset()
-            //    {
-            //        AssetTypeID = 1,
-            //        Value = asset.Value,
-            //        Description = asset.Description
-            //    });
-            //}
-
-            //foreach (var department in departmentsForTransfer)
-            //{
-
-            //    context.Departments.Add(new Department()
-            //    {
-            //        Name = department.Name,
-            //        EmployeeId = department.EmployeeId,
-            //        //DepartmentHead = department.DepartmentHead
-            //    });
-            //}
-
-            //foreach (var employee in employeesForTransfer)
-            //{
-            //    context.Employees.Add(new Employee()
-            //    {
-            //        FirstName = employee.MiddleName,
-            //        MiddleName = employee.MiddleName,
-            //        LastName = employee.MiddleName
-            //    });
-            //}
-
-            //foreach (var group in groupsForTransfer)
-            //{
-            //    context.Groups.Add(new Group()
-            //    {
-            //        Name = group.Name,
-            //        Notes = group.Notes,
-            //        SupervisorID = 1
-            //    });
-            //}
-
-            //foreach (var product in products)
-            //{
-            //    context.Products.Add(new Product()
-            //    {
-            //        Name = product.Name,
-            //        Price = product.Price,
-            //        Quantity = product.Quantity,
-            //        ProductId = product.Producer.ProducerId
-            //    });
-            //}
-
-            //foreach (var producer in producersForTransfer)
-            //{
-            //    context.Producers.Add(new Producer()
-            //    {
-            //        Name = producer.Name
-            //    });
-            //}
-
-            context.SaveChanges();
-        }
-
-        private static ICollection<Child> AddChildren(IOrderedQueryable<Group> groupsForTransfer)
-        {
-            var childs = new List<Child>();
-
-            foreach (var group in groupsForTransfer)
-            {
-                foreach (var child in group.Children)
-                {
-                    child.Group = group;
-                    childs.Add(child);
-                }
-            }
-
-            return childs;
-        }
-
-        private static ICollection<AssetType> AddAssetTypes(ICollection<Asset> assetsForTransfer)
-        {
-            var assetTypes = new List<AssetType>();
-
-            foreach (var asset in assetsForTransfer)
-            {
-                var assetType = asset.AssetType;
-                assetTypes.Add(assetType);
-            }
-
-            return assetTypes;
+            // SQL seeding
+            var context = new TelerikKindergartenData();
+            //UpdateMySql();
         }
 
         private static void SeedMongoDb(string connectionString)
@@ -285,72 +132,20 @@
             }
         }
 
-        private static ICollection<Product> AddProducts(IQueryable<Producer> producers)
-        {
-            var products = new List<Product>();
-
-            foreach (var producer in producers)
-            {
-                foreach (var product in producer.Products)
-                {
-                    product.Producer = producer;
-                    products.Add(product);
-                }
-            }
-
-            return products;
-        }
-
-        private static ICollection<Employee> AddEmployees(IQueryable<Department> departments)
-        {
-            var employees = new List<Employee>();
-
-            foreach (var department in departments)
-            {
-                foreach (var employee in department.Employees)
-                {
-                    employee.Department = department;
-                    employees.Add(employee);
-                }
-            }
-
-            return employees;
-        }
-
-        private static ICollection<Asset> AddAssets(IQueryable<Department> departamentsForTransfer)
-        {
-            var assets = new List<Asset>();
-
-            foreach (var departament in departamentsForTransfer)
-            {
-                foreach (var asset in departament.Assets)
-                {
-                    asset.Department = departament;
-                    assets.Add(asset);
-                }
-            }
-
-            return assets;
-        }
-
         private static void UpdateMySql()
         {
             using (var context = new TelerikKindergartenMySQLModel())
             {
                 var schemaHandler = context.GetSchemaHandler();
                 MySqlUtilities.EnsureDB(schemaHandler);
-
                 //// this is how you add the reports. This is an example, should be made separate.
-               // context.Add(new JSONReportViewModel() { ProducerName = "ICO", ProductId = 2, ProductName = "Chair", TotalIncomes = 22, TotalQuantitySold = 300 });
-
+                // context.Add(new JSONReportViewModel() { ProducerName = "ICO", ProductId = 2, ProductName = "Chair", TotalIncomes = 22, TotalQuantitySold = 300 });
                 //// get the reports
-
-
                 //context.SaveChanges();
                 //Console.WriteLine(context.Reports.Where(r => true).First().ProducerName);
-
             }
         }
+
         private static void SQLiteManipulations()
         {
             DietsDataContext diets = new DietsDataContext();

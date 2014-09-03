@@ -70,8 +70,18 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ExcelManipulator.cs" />
+    <Compile Include="MongoDatabaseOperations\GetData.cs" />
     <Compile Include="PdfReporter.cs" />
     <Compile Include="SqlManipulator.cs" />
+    <Compile Include="SQL\SaveAssetsType.cs" />
+    <Compile Include="SQL\SaveChildrens.cs" />
+    <Compile Include="SQL\SaveDepartments.cs" />
+    <Compile Include="SQL\SaveEmployees.cs" />
+    <Compile Include="SQL\SaveGroups.cs" />
+    <Compile Include="SQL\SaveProducers.cs" />
+    <Compile Include="SQL\SaveProducts.cs" />
+    <Compile Include="SQL\SaveAssets.cs" />
+    <Compile Include="SQL\SeedSql.cs" />
     <Compile Include="XmlManipulator.cs" />
     <Compile Include="JsonManipulator.cs" />
     <Compile Include="Program.cs" />
@@ -119,6 +129,7 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
