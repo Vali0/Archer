@@ -21,5 +21,7 @@
         IGenericRepository<Producer> Producers { get; }
 
         IGenericRepository<Product> Products { get; }
+
+        void SaveChanges();
     }
 }
