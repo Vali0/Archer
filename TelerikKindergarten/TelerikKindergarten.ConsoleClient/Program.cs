@@ -12,35 +12,34 @@
     using Telerik.OpenAccess;
     using TelerikKindergarten.SQLite.Data;
     using MongoDB.Driver;
+    using TelerikKindergarten.ConsoleClient.SQL;
 
     public class Program
     {
         public static void Main(string[] args)
         {
-            var sqlContext = new TelerikKindergartenData();
             
             // Load Excel Reports from ZIP File
-            var importedExcelReports = ExcelManipulator.Import();
+            //var importedExcelReports = ExcelManipulator.Import();
             // import to sql :
 
-            SqlManipulator.AddExcelReports(importedExcelReports, sqlContext);
+            //SqlManipulator.AddExcelReports(importedExcelReports, sqlContext);
             // Generate PDF Reports
-            var pdfReportsFromSql = SqlManipulator.GetPdfReportsData(sqlContext);
-
-            PdfReporter.GenerateReport(pdfReportsFromSql);
+            //var pdfReportsFromSql = SqlManipulator.GetPdfReportsData(sqlContext);
+            //PdfReporter.GenerateReport(pdfReportsFromSql);
 
             // Generate XML Report
-            var xmlReportsFromSql = SqlManipulator.GetXmlReportsData(sqlContext);
-            XmlManipulator.GenerateReport(xmlReportsFromSql);
+            //var xmlReportsFromSql = SqlManipulator.GetXmlReportsData(sqlContext);
+            //XmlManipulator.GenerateReport(xmlReportsFromSql);
 
             // JSON Reports
-            JsonManipulator.GenerateReport();
+            //JsonManipulator.GenerateReport();
 
             // Load data from XML
-            XmlManipulator.LoadData();
+            //XmlManipulator.LoadData();
 
             // Excel data
-            ExcelManipulator.Export();
+            //ExcelManipulator.Export();
 
             //Mongodb seeding
             string mongoConnectionString = "mongodb://localhost";
@@ -48,10 +47,12 @@
             var client = new MongoClient(mongoConnectionString);
             var server = client.GetServer();
             var database = server.GetDatabase("test");
-            //SeedMongoDb(mongoConnectionString);
+            //SeedMongoDb(mongoConnectionString); // Uncomment to seed mongodb
 
             // SQL seeding
-            var context = new TelerikKindergartenData();
+            var sqlContext = new TelerikKindergartenData();
+            //SeedSql.SeedSqlWithData(sqlContext, database); // Uncomment to seed sql
+
             //UpdateMySql();
         }
 

@@ -28,8 +28,6 @@
             context.SaveChanges();
         }
 
-      
-
         public static ICollection<Asset> AddAssets(IQueryable<Department> departamentsForTransfer)
         {
             var assets = new List<Asset>();
