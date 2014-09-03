@@ -26,9 +26,15 @@
             var server = client.GetServer();
             var database = server.GetDatabase("test");
             //SeedData.SeedMongoDb(mongoConnectionString); // Uncomment to seed mongodb
-            
+
             // Load Excel Reports from ZIP File
             //var importedExcelReports = ExcelManipulator.Import();
+
+            //Initialize MySQL
+            var mySqlContext = new TelerikKindergartenMySQLModel();
+            var schemaHandler = mySqlContext.GetSchemaHandler();
+            MySqlUtilities.EnsureDB(schemaHandler);
+
             // import to sql :
 
             var sqlContext = new TelerikKindergartenData();
@@ -47,7 +53,7 @@
 
             var jsonReportsFromFiles = JsonManipulator.GetJsonReportsFromFiles();
 
-            MySqlManipulator.AddJsonReports(jsonReportsFromFiles);
+            MySqlManipulator.AddJsonReports(jsonReportsFromFiles, mySqlContext);
             // Load data from XML
             var loadedXmlReports = XmlManipulator.LoadReportsFromFiles();
 
@@ -56,13 +62,13 @@
             // Excel data
             //ExcelManipulator.Export();
 
-            
+            var reportsFromMySql = MySqlManipulator.GetReports(mySqlContext);
 
             // SQL seeding
             //SeedSql.SeedSqlWithData(sqlContext, database); // Uncomment to seed sql
 
             //UpdateMySql();
-        }        
+        }
 
         private static void UpdateMySql()
         {
