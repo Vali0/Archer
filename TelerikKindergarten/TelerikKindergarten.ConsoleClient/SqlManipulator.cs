@@ -12,7 +12,12 @@ using TelerikKindergarten.ReportModels;
     {
         public static void AddExcelReports(IEnumerable<ExcelReportViewModel> reports, ITelerikKindergartenData context)
         {
-            
+            throw new NotImplementedException();
+        }
+
+        public static IEnumerable<PdfReportViewModel> GetPdfReportsData(ITelerikKindergartenData context)
+        {
+            throw new NotImplementedException();
         }
     }
 }
