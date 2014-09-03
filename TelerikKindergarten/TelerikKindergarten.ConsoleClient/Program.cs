@@ -17,9 +17,7 @@
     {
         public static void Main(string[] args)
         {
-            UpdateMySql();
-
-
+            //UpdateMySql();
 
             //var employee = new Employee() { FirstName = "Ivancho" };
             var context = new TelerikKindergartenData();
@@ -53,12 +51,49 @@
 
             var departments = database.GetCollection("departments");
             var departmentsForTransfer = departments.AsQueryable<Department>()
-                                                    .Where(e => e.Employees.Any());
+                                                    .Where(e => e.Employees.Any())
+                                                    .Where(a => a.Assets.Any());
 
             var employeesForTransfer = AddEmployees(departmentsForTransfer);
 
 
+            var assetsForTransfer = AddAssets(departmentsForTransfer);
 
+            var assetTypesForTransfer = AddAssetTypes(assetsForTransfer);
+
+            var childrenForTransfer = AddChildren(groupsForTransfer);
+
+            //foreach (var child in childrenForTransfer)
+            //{
+            //    context.Children.Add(new Child()
+            //    {
+            //        FirstName = child.LastName,
+            //        MiddleName = child.LastName,
+            //        LastName = child.LastName,
+            //        Address = child.Address,
+            //        AdmissionDate = child.AdmissionDate,
+            //        ConclusionDate = child.ConclusionDate,
+            //        GroupID = 10
+            //    });
+            //}
+
+            //foreach (var assetType in assetTypesForTransfer)
+            //{
+            //    context.AssetTypes.Add(new AssetType()
+            //    {
+            //        Name = assetType.Name
+            //    });
+            //}
+
+            //foreach (var asset in assetsForTransfer)
+            //{
+            //    context.Assets.Add(new Asset()
+            //    {
+            //        AssetTypeID = 1,
+            //        Value = asset.Value,
+            //        Description = asset.Description
+            //    });
+            //}
 
             //foreach (var department in departmentsForTransfer)
             //{
@@ -87,10 +122,9 @@
             //    {
             //        Name = group.Name,
             //        Notes = group.Notes,
-            //        //SupervisorID = 1
+            //        SupervisorID = 1
             //    });
             //}
-
 
             //foreach (var product in products)
             //{
@@ -99,7 +133,7 @@
             //        Name = product.Name,
             //        Price = product.Price,
             //        Quantity = product.Quantity,
-            //        ProductId = product.Producer.ProducerId // Check why null
+            //        ProductId = product.Producer.ProducerId
             //    });
             //}
 
@@ -112,6 +146,35 @@
             //}
 
             context.SaveChanges();
+        }
+
+        private static ICollection<Child> AddChildren(IOrderedQueryable<Group> groupsForTransfer)
+        {
+            var childs = new List<Child>();
+
+            foreach (var group in groupsForTransfer)
+            {
+                foreach (var child in group.Children)
+                {
+                    child.Group = group;
+                    childs.Add(child);
+                }
+            }
+
+            return childs;
+        }
+
+        private static ICollection<AssetType> AddAssetTypes(ICollection<Asset> assetsForTransfer)
+        {
+            var assetTypes = new List<AssetType>();
+
+            foreach (var asset in assetsForTransfer)
+            {
+                var assetType = asset.AssetType;
+                assetTypes.Add(assetType);
+            }
+
+            return assetTypes;
         }
 
         private static void SeedMongoDb(string connectionString)
@@ -221,6 +284,22 @@
             }
 
             return employees;
+        }
+
+        private static ICollection<Asset> AddAssets(IQueryable<Department> departamentsForTransfer)
+        {
+            var assets = new List<Asset>();
+
+            foreach (var departament in departamentsForTransfer)
+            {
+                foreach (var asset in departament.Assets)
+                {
+                    asset.Department = departament;
+                    assets.Add(asset);
+                }
+            }
+
+            return assets;
         }
 
         private static void UpdateMySql()
