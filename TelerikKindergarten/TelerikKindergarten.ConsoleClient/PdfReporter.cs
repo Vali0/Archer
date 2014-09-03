@@ -5,12 +5,13 @@
     using System.Linq;
 
     using TelerikKindergarten.ReportModels;
+    using TelerikKindergarten.ReportsManipulation;
 
     public static class PdfReporter
     {
         public static void GenerateReport(IEnumerable<PdfReportViewModel> pdfReports)
         {
-            throw new NotImplementedException();
+            ExportReports.CreatePdfReport(pdfReports);
         }
     }
 }

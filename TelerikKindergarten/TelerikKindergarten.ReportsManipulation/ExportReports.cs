@@ -15,7 +15,7 @@
 
     public class ExportReports
     {
-        public static void CreatePdfReport(List<PdfReportViewModel> reports)
+        public static void CreatePdfReport(IEnumerable<PdfReportViewModel> reports)
         {
             Document document = new Document();
 
