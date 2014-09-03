@@ -112,7 +112,7 @@
             return fileDataFromReport;
         }
 
-        public static List<XmlReportViewModel> ReadXML(string filePath)
+        public static IEnumerable<XmlReportViewModel> GetXmlFromFile(string filePath = "") //TODO: Fix the path!
         {
             var collection = new List<XmlReportViewModel>();
             var serializer = new XmlSerializer(collection.GetType());

@@ -5,6 +5,7 @@
     using System.Linq;
 
     using TelerikKindergarten.ReportModels;
+    using TelerikKindergarten.ReportsManipulation;
 
     public static class XmlManipulator
     {
@@ -15,7 +16,7 @@
 
         public static IEnumerable<XmlReportViewModel> LoadReportsFromFiles()
         {
-            throw new NotImplementedException();
+            return ImportReports.GetXmlFromFile();
         }
     }
 }
