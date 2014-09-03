@@ -18,9 +18,13 @@
     {
         public static void Main(string[] args)
         {
+            var sqlContext = new TelerikKindergartenData();
+            
             // Load Excel Reports from ZIP File
-            ExcelManipulator.Import();
+            var importedExcelReports = ExcelManipulator.Import();
+            // import to sql :
 
+            SqlManipulator.AddExcelReports(importedExcelReports, sqlContext);
             // Generate PDF Reports
             PdfReporter.GenerateReport();
 

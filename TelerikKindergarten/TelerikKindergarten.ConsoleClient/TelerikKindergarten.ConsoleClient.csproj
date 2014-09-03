@@ -71,6 +71,7 @@
   <ItemGroup>
     <Compile Include="ExcelManipulator.cs" />
     <Compile Include="PdfReporter.cs" />
+    <Compile Include="SqlManipulator.cs" />
     <Compile Include="XmlManipulator.cs" />
     <Compile Include="JsonManipulator.cs" />
     <Compile Include="Program.cs" />
