@@ -11,6 +11,26 @@ namespace TelerikKindergarten.ConsoleClient.MongoDatabaseOperations
 {
     public static class SeedData
     {
+        private static string[] ASSET_TYPES_NAMES = {
+                                           "Toy(medium)",
+                                           "Toy(big)",
+                                           "Toy(small)",
+                                           "Lamp",
+                                           "Bucket",
+                                           "Lightbulb",
+                                           "Oven",
+                                           "Plate(small)",
+                                           "Plate(big)",
+                                           "Chair",
+                                           "Table",
+                                           "Broom",
+                                           "Cleaning solution",
+                                           "Pan",
+                                           "Utensils",
+                                           "Bowl",
+                                           "Carpet(big)"
+                                       };
+
         public static void AddXmlReports(IEnumerable<XmlReportViewModel> xmlReports, MongoDatabase mongoDatabase)
         {
             var reports = mongoDatabase.GetCollection<XmlReportViewModel>("reports");
@@ -55,29 +75,6 @@ namespace TelerikKindergarten.ConsoleClient.MongoDatabaseOperations
             }
         }
 
-        private static void SeedAssetTypes()
-        {
-            string[] assetTypesNames = {
-                                           "Toy(medium)",
-                                           "Toy(big)",
-                                           "Toy(small)",
-                                           "Lamp",
-                                           "Bucket",
-                                           "Lightbulb",
-                                           "Oven",
-                                           "Plate(small)",
-                                           "Plate(big)",
-                                           "Chair",
-                                           "Table",
-                                           "Broom",
-                                           "Cleaning solution",
-                                           "Pan",
-                                           "Utensils",
-                                           "Bowl",
-                                           "Carpet(big)"
-                                       };
-        }
-
         private static void SeedDepartments(MongoCollection<Department> departments)
         {
             string[] deptNames = new string []{
@@ -98,9 +95,9 @@ namespace TelerikKindergarten.ConsoleClient.MongoDatabaseOperations
                     currentDepartment.Employees.Add(employee);
                 }
 
-                for (int i = 0; i < 10; i++)
+                for (int i = 0; i < ASSET_TYPES_NAMES.Length; i++)
                 {
-                    var asset = new Asset() { Description = "Descr" + i, Value = i * 5, AssetType = new AssetType() { Name = "Chair" } };
+                    var asset = new Asset() { Description = "Descr" + i, Value = i * 5, AssetType = new AssetType() { Name = ASSET_TYPES_NAMES[i] } };
                     currentDepartment.Assets.Add(asset);
                 }
 
