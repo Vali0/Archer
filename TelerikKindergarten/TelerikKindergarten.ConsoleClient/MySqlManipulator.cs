@@ -11,12 +11,15 @@
     {
         public static void AddJsonReports(IEnumerable<JSONReportViewModel> jsonReportsFromFiles, TelerikKindergartenMySQLModel context)
         {
-            throw new NotImplementedException();
+            context.Add(jsonReportsFromFiles);
+            context.SaveChanges();
         }
 
         public static IEnumerable<JSONReportViewModel> GetReports(TelerikKindergartenMySQLModel context)
         {
-            throw new NotImplementedException();
+            var reports = context.Reports.ToList();
+
+            return reports;
         }
     }
 }
