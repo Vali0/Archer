@@ -92,9 +92,9 @@
                     string product = row.ItemArray[0].ToString();
                     string producer = row.ItemArray[1].ToString();
                     string dept = row.ItemArray[2].ToString();
-                    int quantity = (int)row.ItemArray[3];
-                    decimal unitPrice = (decimal)row.ItemArray[4];
-                    decimal totalPrice = (decimal)row.ItemArray[5];
+                    int quantity = int.Parse(row.ItemArray[3].ToString());
+                    decimal unitPrice = decimal.Parse(row.ItemArray[4].ToString());
+                    decimal totalPrice = decimal.Parse(row.ItemArray[5].ToString());
 
                     fileDataFromReport.Add(new ExcelReportViewModel
                     {
