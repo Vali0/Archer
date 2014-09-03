@@ -18,6 +18,29 @@
     {
         public static void Main(string[] args)
         {
+            // Load Excel Reports from ZIP File
+            ExcelManipulator.Import();
+
+            // Generate PDF Reports
+            PdfReporter.GenerateReport();
+
+            // Generate XML Report
+            XmlManipulator.GenerateReport();
+
+            // JSON Reports
+            JsonManipulator.GenerateReport();
+
+            // Load data from XML
+            XmlManipulator.LoadData();
+
+            // Excel data
+            ExcelManipulator.Export();
+
+
+
+
+
+
             //UpdateMySql();
 
             //var employee = new Employee() { FirstName = "Ivancho" };
