@@ -1,12 +1,9 @@
 ﻿namespace TelerikKindergarten.ReportModels
 {
     using System;
-    using System.Collections.Generic;
     using System.Linq;
-    using System.Text;
-    using System.Threading.Tasks;
 
-    public class JSONReportViewModel
+    public class JsonReportViewModel
     {
         public int Id { get; set; }
 

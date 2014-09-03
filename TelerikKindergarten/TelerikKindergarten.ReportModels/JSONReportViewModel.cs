@@ -6,7 +6,7 @@
 //    using System.Text;
 //    using System.Threading.Tasks;
 
-//    public class JSONReportViewModel
+//    public class JsonReportViewModel
 //    {
 //        public int Id { get; set; }
 

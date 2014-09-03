@@ -14,7 +14,7 @@
             return ImportReports.GetExcelReports();
         }
 
-        public static void ExportReports(IEnumerable<JSONReportViewModel> jsonReports, IEnumerable<FoodReportViewModel> foodReport)
+        public static void ExportReports(IEnumerable<JsonReportViewModel> jsonReports, IEnumerable<FoodReportViewModel> foodReport)
         {
             throw new NotImplementedException();
         }

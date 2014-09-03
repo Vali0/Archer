@@ -5,15 +5,16 @@
     using System.Linq;
 
     using TelerikKindergarten.ReportModels;
+    using TelerikKindergarten.ReportsManipulation;
 
     public static class JsonManipulator
     {
-        public static void GenerateReports(IEnumerable<JSONReportViewModel> jsonReports)
+        public static void GenerateReports(IEnumerable<JsonReportViewModel> jsonReports)
         {
-            throw new NotImplementedException();
+            ExportReports.CreateJsonReport(jsonReports);
         }
 
-        public static IEnumerable<JSONReportViewModel> GetJsonReportsFromFiles()
+        public static IEnumerable<JsonReportViewModel> GetJsonReportsFromFiles()
         {
             throw new NotImplementedException();
         }

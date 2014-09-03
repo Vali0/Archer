@@ -9,13 +9,13 @@
 
     public static class MySqlManipulator
     {
-        public static void AddJsonReports(IEnumerable<JSONReportViewModel> jsonReportsFromFiles, TelerikKindergartenMySQLModel context)
+        public static void AddJsonReports(IEnumerable<JsonReportViewModel> jsonReportsFromFiles, TelerikKindergartenMySQLModel context)
         {
             context.Add(jsonReportsFromFiles);
             context.SaveChanges();
         }
 
-        public static IEnumerable<JSONReportViewModel> GetReports(TelerikKindergartenMySQLModel context)
+        public static IEnumerable<JsonReportViewModel> GetReports(TelerikKindergartenMySQLModel context)
         {
             var reports = context.Reports.ToList();
 

@@ -67,11 +67,11 @@ namespace TelerikKindergarten.MySQL.Data
 		/// <param name="config">The BackendConfiguration of TelerikKindergartenMySQLModel.</param>
 		static partial void CustomizeBackendConfiguration(ref BackendConfiguration config);
 
-        public IQueryable<JSONReportViewModel> Reports
+        public IQueryable<JsonReportViewModel> Reports
         {
             get
             {
-                return this.GetAll<JSONReportViewModel>();
+                return this.GetAll<JsonReportViewModel>();
             }
         }
 		

@@ -31,7 +31,7 @@ namespace TelerikKindergarten.MySQL.Data
         {
             List<MappingConfiguration> configurations = new List<MappingConfiguration>();
 
-            var reportMapping = new MappingConfiguration<JSONReportViewModel>();
+            var reportMapping = new MappingConfiguration<JsonReportViewModel>();
             reportMapping.MapType(p => new
             {
                 Id = p.Id,

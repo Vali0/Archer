@@ -1,18 +1,17 @@
 ﻿namespace TelerikKindergarten.ReportsManipulation
-{
-    using MigraDoc.DocumentObjectModel;
-    using MigraDoc.Rendering;
+{    
     using System;
     using System.Collections.Generic;
+    using System.Data.OleDb;
     using System.Diagnostics;
+    using System.IO;
     using System.Linq;
-    using System.Text;
-    using System.Threading.Tasks;
+
+    using MigraDoc.DocumentObjectModel;
+    using MigraDoc.Rendering;
+    using Newtonsoft.Json;
 
     using ReportModels;
-    using Newtonsoft.Json;
-    using System.IO;
-    using System.Data.OleDb;
 
     public class ExportReports
     {
@@ -59,7 +58,7 @@
             Process.Start(filename);
         }
 
-        public static void CreateJSONReport(IEnumerable<JSONReportViewModel> dataToExport, string pathToSaveReport)
+        public static void CreateJsonReport(IEnumerable<JsonReportViewModel> dataToExport, string pathToSaveReport = "../../JsonReports")
         {
 
             JsonSerializer serializer = new JsonSerializer();

@@ -35,7 +35,7 @@
             throw new NotImplementedException();
         }
 
-        public static IEnumerable<JSONReportViewModel> GetJsonReportsData(ITelerikKindergartenData context)
+        public static IEnumerable<JsonReportViewModel> GetJsonReportsData(ITelerikKindergartenData context)
         {
             throw new NotImplementedException();
         }
