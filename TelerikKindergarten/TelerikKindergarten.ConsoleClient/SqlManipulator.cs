@@ -42,5 +42,14 @@
             throw new NotImplementedException();
         }
 
+        public static IEnumerable<JSONReportViewModel> GetJsonReportsData(ITelerikKindergartenData context)
+        {
+            throw new NotImplementedException();
+        }
+
+        public static void AddXmlReports(IEnumerable<XmlReportViewModel> loadedXmlReports, ITelerikKindergartenData sqlContext)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

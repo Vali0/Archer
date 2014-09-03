@@ -31,6 +31,7 @@
             //var importedExcelReports = ExcelManipulator.Import();
             // import to sql :
 
+            var sqlContext = new TelerikKindergartenData();
             //SqlManipulator.AddExcelReports(importedExcelReports, sqlContext);
             // Generate PDF Reports
             //var pdfReportsFromSql = SqlManipulator.GetPdfReportsData(sqlContext);
@@ -41,18 +42,23 @@
             //XmlManipulator.GenerateReport(xmlReportsFromSql);
 
             // JSON Reports
-            //JsonManipulator.GenerateReport();
+            var jsonReportsFromSql = SqlManipulator.GetJsonReportsData(sqlContext);
+            JsonManipulator.GenerateReports(jsonReportsFromSql);
 
+            var jsonReportsFromFiles = JsonManipulator.GetJsonReportsFromFiles();
+
+            MySqlManipulator.AddJsonReports(jsonReportsFromFiles);
             // Load data from XML
-            //XmlManipulator.LoadData();
+            var loadedXmlReports = XmlManipulator.LoadReportsFromFiles();
 
+            SqlManipulator.AddXmlReports(loadedXmlReports, sqlContext);
+            SeedData.AddXmlReports(loadedXmlReports, database);
             // Excel data
             //ExcelManipulator.Export();
 
             
 
             // SQL seeding
-            var sqlContext = new TelerikKindergartenData();
             //SeedSql.SeedSqlWithData(sqlContext, database); // Uncomment to seed sql
 
             //UpdateMySql();

@@ -4,12 +4,20 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using TelerikKindergarten.ReportModels;
 using TelerikKindergarten.SQL.Model;
 
 namespace TelerikKindergarten.ConsoleClient.MongoDatabaseOperations
 {
     public static class SeedData
     {
+        public static void AddXmlReports(IEnumerable<XmlReportViewModel> xmlReports, MongoDatabase mongoDatabase)
+        {
+            var reports = mongoDatabase.GetCollection<XmlReportViewModel>("reports");
+
+            reports.InsertBatch<XmlReportViewModel>(xmlReports);
+        }
+
         public static void SeedMongoDb(string connectionString)
         {
             var client = new MongoClient(connectionString);
