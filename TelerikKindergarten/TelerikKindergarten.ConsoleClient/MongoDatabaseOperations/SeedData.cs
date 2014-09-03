@@ -80,6 +80,7 @@ namespace TelerikKindergarten.ConsoleClient.MongoDatabaseOperations
 
         private static void SeedDepartments(MongoCollection<Department> departments)
         {
+            for (int indexOfDepartments = 0; indexOfDepartments < 5; indexOfDepartments++)
             string[] deptNames = {
                                     "Cooking",
                                     "Cleaning",
