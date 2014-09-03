@@ -21,7 +21,7 @@
         /// <param name="zipNameAndExtension">Only the name and extension of the file. 
         /// NOTE: Works only for .zip files</param>
         /// <returns>Returns IEnumerable with objects that hold the necessary data from the reports</returns>
-        public static IEnumerable<ExcelReportViewModel> GetExcelReports(string pathToZipFile = @"C:\Users\Home\Desktop\Teamwork\Archer\Excel import reports", string zipNameAndExtension = "Excel import reports.zip")
+        public static IEnumerable<ExcelReportViewModel> GetExcelReports(string pathToZipFile = @"..\..\..\..\Excel import reports", string zipNameAndExtension = "Excel import reports.zip")
         {
             ExtractZipReports(pathToZipFile, zipNameAndExtension);
 

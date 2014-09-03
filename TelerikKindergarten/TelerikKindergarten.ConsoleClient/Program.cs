@@ -25,20 +25,24 @@
             var client = new MongoClient(mongoConnectionString);
             var server = client.GetServer();
             var database = server.GetDatabase("test");
-            SeedData.SeedMongoDb(mongoConnectionString); // Uncomment to seed mongodb
+            //SeedData.SeedMongoDb(mongoConnectionString); // Uncomment to seed mongodb
 
             //Initialize MySQL
-            var mySqlContext = new TelerikKindergartenMySQLModel();
-            var schemaHandler = mySqlContext.GetSchemaHandler();
-            MySqlUtilities.EnsureDB(schemaHandler);
+            //var mySqlContext = new TelerikKindergartenMySQLModel();
+            //var schemaHandler = mySqlContext.GetSchemaHandler();
+            //MySqlUtilities.EnsureDB(schemaHandler);
+            //UpdateMySql();
             
             // Initialize MSSQL
             var sqlContext = new TelerikKindergartenData();
+            // SQL seeding
+            SeedSql.SeedSqlWithData(sqlContext, database); // Uncomment to seed sql
 
             // Load Excel Reports from ZIP File
             var importedExcelReports = ExcelManipulator.Import();
             SqlManipulator.AddExcelReports(importedExcelReports, sqlContext);
-
+            Console.ReadKey();
+            Environment.Exit(0);
             var sqLiteContext = new DietsDataContext();
             //SqlManipulator.AddExcelReports(importedExcelReports, sqlContext);
             // Generate PDF Reports
@@ -55,7 +59,7 @@
 
             var jsonReportsFromFiles = JsonManipulator.GetJsonReportsFromFiles();
 
-            MySqlManipulator.AddJsonReports(jsonReportsFromFiles, mySqlContext);
+            //MySqlManipulator.AddJsonReports(jsonReportsFromFiles, mySqlContext);
             // Load data from XML
             var loadedXmlReports = XmlManipulator.LoadReportsFromFiles();
 
@@ -64,19 +68,9 @@
             // Excel data
             //ExcelManipulator.Export();
 
-            var reportsFromMySql = MySqlManipulator.GetReports(mySqlContext);
+            //var reportsFromMySql = MySqlManipulator.GetReports(mySqlContext);
             var foodReportsFromSqLite = SqLiteManipulator.GetFoodReports(sqLiteContext);   
             
-            
-            
-            
-            
-            
-            
-            // SQL seeding
-            //SeedSql.SeedSqlWithData(sqlContext, database); // Uncomment to seed sql
-
-            //UpdateMySql();
         }
 
         private static void UpdateMySql()
