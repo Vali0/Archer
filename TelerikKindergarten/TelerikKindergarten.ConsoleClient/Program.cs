@@ -25,19 +25,19 @@
             var client = new MongoClient(mongoConnectionString);
             var server = client.GetServer();
             var database = server.GetDatabase("test");
-            //SeedData.SeedMongoDb(mongoConnectionString); // Uncomment to seed mongodb
-
-            // Load Excel Reports from ZIP File
-            //var importedExcelReports = ExcelManipulator.Import();
+            SeedData.SeedMongoDb(mongoConnectionString); // Uncomment to seed mongodb
 
             //Initialize MySQL
             var mySqlContext = new TelerikKindergartenMySQLModel();
             var schemaHandler = mySqlContext.GetSchemaHandler();
             MySqlUtilities.EnsureDB(schemaHandler);
-
-            // import to sql :
-
+            
+            // Initialize MSSQL
             var sqlContext = new TelerikKindergartenData();
+
+            // Load Excel Reports from ZIP File
+            var importedExcelReports = ExcelManipulator.Import();
+            SqlManipulator.AddExcelReports(importedExcelReports, sqlContext);
 
             var sqLiteContext = new DietsDataContext();
             //SqlManipulator.AddExcelReports(importedExcelReports, sqlContext);

@@ -15,21 +15,15 @@
         {
             foreach (var report in reports)
             {
-                // title, producer, product
-                string assetName = report.Product;
-                var assets = context.AssetTypes.SearchFor(x => x.Name == report.Product);
-                if (assets.Count() == 0)
-                {
-                    var newAssetType = new AssetType();
-                    newAssetType.Name = report.Product;
-                    context.AssetTypes.Add(newAssetType);
-                    context.SaveChanges();
-                }
+                var newAsset = new Asset();
+                newAsset.AssetType = context.AssetTypes.SearchFor(x => x.Name == report.Product).First();
+                newAsset.Department = context.Departments.SearchFor(x => x.Name == report.Department).First();
+                newAsset.Value = report.TotalPrice;
 
-                var asset = new Asset();
-                var assetType = context.AssetTypes.SearchFor(x => x.Name == assetName).First();
-                asset.AssetType = assetType;
+                context.Assets.Add(newAsset);
             }
+
+            context.SaveChanges();
         }
 
         public static IEnumerable<PdfReportViewModel> GetPdfReportsData(ITelerikKindergartenData context)
