@@ -71,6 +71,7 @@
   <ItemGroup>
     <Compile Include="ExcelManipulator.cs" />
     <Compile Include="MongoDatabaseOperations\GetData.cs" />
+    <Compile Include="MongoDatabaseOperations\SeedData.cs" />
     <Compile Include="PdfReporter.cs" />
     <Compile Include="SqlManipulator.cs" />
     <Compile Include="SQL\SaveAssetsType.cs" />
