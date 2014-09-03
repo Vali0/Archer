@@ -74,6 +74,7 @@
     <Compile Include="MongoDatabaseOperations\SeedData.cs" />
     <Compile Include="MySqlManipulator.cs" />
     <Compile Include="PdfReporter.cs" />
+    <Compile Include="SqLiteManipulator.cs" />
     <Compile Include="SqlManipulator.cs" />
     <Compile Include="SQL\SaveAssetsType.cs" />
     <Compile Include="SQL\SaveChildrens.cs" />

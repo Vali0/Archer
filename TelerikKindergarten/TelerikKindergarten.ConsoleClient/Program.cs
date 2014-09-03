@@ -38,6 +38,8 @@
             // import to sql :
 
             var sqlContext = new TelerikKindergartenData();
+
+            var sqLiteContext = new DietsDataContext();
             //SqlManipulator.AddExcelReports(importedExcelReports, sqlContext);
             // Generate PDF Reports
             //var pdfReportsFromSql = SqlManipulator.GetPdfReportsData(sqlContext);
@@ -63,7 +65,14 @@
             //ExcelManipulator.Export();
 
             var reportsFromMySql = MySqlManipulator.GetReports(mySqlContext);
-
+            var foodReportsFromSqLite = SqLiteManipulator.GetFoodReports(sqLiteContext);   
+            
+            
+            
+            
+            
+            
+            
             // SQL seeding
             //SeedSql.SeedSqlWithData(sqlContext, database); // Uncomment to seed sql
 

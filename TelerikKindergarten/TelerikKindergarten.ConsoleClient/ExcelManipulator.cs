@@ -3,8 +3,7 @@
     using System;
     using System.Collections.Generic;
     using System.Linq;
-    using System.Text;
-    using System.Threading.Tasks;
+
     using TelerikKindergarten.ReportModels;
     using TelerikKindergarten.ReportsManipulation;
 
@@ -15,9 +14,9 @@
             return ImportReports.GetExcelReports();
         }
 
-        public static void Export()
+        public static void ExportReports(IEnumerable<JSONReportViewModel> jsonReports, IEnumerable<FoodReportViewModel> foodReport)
         {
-            
+            throw new NotImplementedException();
         }
     }
 }
