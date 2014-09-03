@@ -1,14 +1,13 @@
-﻿using MongoDB.Driver;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using TelerikKindergarten.ReportModels;
-using TelerikKindergarten.SQL.Model;
-
-namespace TelerikKindergarten.ConsoleClient.MongoDatabaseOperations
+﻿namespace TelerikKindergarten.ConsoleClient.MongoDatabaseOperations
 {
+    using System;
+    using System.Collections.Generic;
+    using System.Linq;
+
+    using MongoDB.Driver;
+
+    using TelerikKindergarten.ReportModels;
+    using TelerikKindergarten.SQL.Model;
     public static class SeedData
     {
         private static string[] ASSET_TYPES_NAMES = {

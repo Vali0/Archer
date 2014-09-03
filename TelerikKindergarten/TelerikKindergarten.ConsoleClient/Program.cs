@@ -1,19 +1,15 @@
 ﻿namespace TelerikKindergarten.ConsoleClient
 {
     using System;
-    using System.Collections.Generic;
     using System.Linq;
-    using System.Text;
-    using System.Threading.Tasks;
-    using TelerikKindergarten.SQL.Model;
-    using TelerikKindergarten.Data;
-    using TelerikKindergarten.MySQL.Data;
-    using TelerikKindergarten.ReportModels;
-    using Telerik.OpenAccess;
-    using TelerikKindergarten.SQLite.Data;
+
     using MongoDB.Driver;
+    
     using TelerikKindergarten.ConsoleClient.SQL;
     using TelerikKindergarten.ConsoleClient.MongoDatabaseOperations;
+    using TelerikKindergarten.Data;
+    using TelerikKindergarten.MySQL.Data;
+    using TelerikKindergarten.SQLite.Data;
 
     public class Program
     {

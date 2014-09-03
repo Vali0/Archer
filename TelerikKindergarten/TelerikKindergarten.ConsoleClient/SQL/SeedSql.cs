@@ -1,11 +1,10 @@
 ﻿namespace TelerikKindergarten.ConsoleClient.SQL
 {
-    using MongoDB.Driver;
     using System;
-    using System.Collections.Generic;
     using System.Linq;
-    using System.Text;
-    using System.Threading.Tasks;
+
+    using MongoDB.Driver;
+
     using TelerikKindergarten.Data;
 
     public class SeedSql
