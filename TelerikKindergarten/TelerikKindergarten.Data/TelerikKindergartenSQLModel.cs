@@ -7,12 +7,12 @@ namespace TelerikKindergarten.Data
     using TelerikKindergarten.Data.Migrations;
     using TelerikKindergarten.SQL.Model;
 
-    public partial class TelerikKindergartenSQLModel : DbContext, ITelerikKindergartenContext
+    public partial class TelerikKindergartenSqlModel : DbContext, ITelerikKindergartenContext
     {
-        public TelerikKindergartenSQLModel()
+        public TelerikKindergartenSqlModel()
             : base("name=TelerikKindergartenSQLModel")
         {
-            Database.SetInitializer<TelerikKindergartenSQLModel>(new MigrateDatabaseToLatestVersion<TelerikKindergartenSQLModel, Configuration>());
+            Database.SetInitializer<TelerikKindergartenSqlModel>(new MigrateDatabaseToLatestVersion<TelerikKindergartenSqlModel, Configuration>());
         }
 
         public virtual IDbSet<Asset> Assets { get; set; }

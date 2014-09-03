@@ -53,7 +53,7 @@
     <Compile Include="Repositories\GenericRepository.cs" />
     <Compile Include="Repositories\IGenericRepository.cs" />
     <Compile Include="TelerikKindergartenData.cs" />
-    <Compile Include="TelerikKindergartenSQLModel.cs" />
+    <Compile Include="TelerikKindergartenSqlModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

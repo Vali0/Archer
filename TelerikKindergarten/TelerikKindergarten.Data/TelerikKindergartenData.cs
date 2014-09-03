@@ -11,7 +11,7 @@
         private ITelerikKindergartenContext context;
         private IDictionary<Type, object> repositories;
 
-        public TelerikKindergartenData() : this(new TelerikKindergartenSQLModel())
+        public TelerikKindergartenData() : this(new TelerikKindergartenSqlModel())
         {
         }
 

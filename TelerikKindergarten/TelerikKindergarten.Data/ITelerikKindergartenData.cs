@@ -1,6 +1,7 @@
 ﻿namespace TelerikKindergarten.Data
 {
     using System;
+
     using TelerikKindergarten.Data.Repositories;
     using TelerikKindergarten.SQL.Model;
     

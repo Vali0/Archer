@@ -5,7 +5,7 @@ namespace TelerikKindergarten.Data.Migrations
     using System.Data.Entity.Migrations;
     using System.Linq;
 
-    internal sealed class Configuration : DbMigrationsConfiguration<TelerikKindergartenSQLModel>
+    internal sealed class Configuration : DbMigrationsConfiguration<TelerikKindergartenSqlModel>
     {
         public Configuration()
         {
@@ -14,7 +14,7 @@ namespace TelerikKindergarten.Data.Migrations
             this.ContextKey = "TelerikKindergarten.SQL.Model.TelerikKindergartenSQLModel";
         }
 
-        protected override void Seed(TelerikKindergartenSQLModel context)
+        protected override void Seed(TelerikKindergartenSqlModel context)
         {
             //  This method will be called after migrating to the latest version.
 

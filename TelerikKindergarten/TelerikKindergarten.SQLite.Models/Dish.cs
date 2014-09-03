@@ -1,6 +1,5 @@
 ﻿namespace TelerikKindergarten.SQLite.Models
 {
-    using System.Collections.Generic;
     using System.ComponentModel.DataAnnotations;
 
     public class Dish

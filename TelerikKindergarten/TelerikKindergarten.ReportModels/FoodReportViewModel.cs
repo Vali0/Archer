@@ -1,10 +1,5 @@
-﻿
-namespace TelerikKindergarten.ReportModels
+﻿namespace TelerikKindergarten.ReportModels
 {
-    using System;
-    using System.Collections.Generic;
-    using System.Linq;
-    
     public class FoodReportViewModel
     {
         public string DietName { get; set; }
