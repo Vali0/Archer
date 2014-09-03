@@ -55,12 +55,6 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\TelerikKindergarten.ReportModels\TelerikKindergarten.ReportModels.csproj">
-      <Project>{2aba1941-b314-44e5-a2af-1512ac9dd450}</Project>
-      <Name>TelerikKindergarten.ReportModels</Name>
-    </ProjectReference>
-  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

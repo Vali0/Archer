@@ -59,6 +59,8 @@
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Data" />
     <Reference Include="System.Xml" />
+    <Reference Include="Telerik.OpenAccess, Version=2014.2.711.1, Culture=neutral, PublicKeyToken=7ce17eeaf1d59342, processorArchitecture=MSIL" />
+    <Reference Include="Telerik.OpenAccess.35.Extensions, Version=2014.2.711.1, Culture=neutral, PublicKeyToken=7ce17eeaf1d59342, processorArchitecture=MSIL" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ExportReports.cs" />
@@ -69,6 +71,10 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\TelerikKindergarten.MySQL.Data\TelerikKindergarten.MySQL.Data.csproj">
+      <Project>{fb207f04-4e22-44f3-8b90-5de6865b5f41}</Project>
+      <Name>TelerikKindergarten.MySQL.Data</Name>
+    </ProjectReference>
     <ProjectReference Include="..\TelerikKindergarten.ReportModels\TelerikKindergarten.ReportModels.csproj">
       <Project>{2aba1941-b314-44e5-a2af-1512ac9dd450}</Project>
       <Name>TelerikKindergarten.ReportModels</Name>

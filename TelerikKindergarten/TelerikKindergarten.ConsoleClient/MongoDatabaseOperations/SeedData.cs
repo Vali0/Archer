@@ -55,7 +55,7 @@ namespace TelerikKindergarten.ConsoleClient.MongoDatabaseOperations
             }
         }
 
-        private void SeedAssetTypes()
+        private static void SeedAssetTypes()
         {
             string[] assetTypesNames = {
                                            "Toy(medium)",
@@ -80,8 +80,7 @@ namespace TelerikKindergarten.ConsoleClient.MongoDatabaseOperations
 
         private static void SeedDepartments(MongoCollection<Department> departments)
         {
-            for (int indexOfDepartments = 0; indexOfDepartments < 5; indexOfDepartments++)
-            string[] deptNames = {
+            string[] deptNames = new string []{
                                     "Cooking",
                                     "Cleaning",
                                     "Children care",
