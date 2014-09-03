@@ -91,12 +91,20 @@
 
                     string product = row.ItemArray[0].ToString();
                     string producer = row.ItemArray[1].ToString();
+                    string dept = row.ItemArray[2].ToString();
+                    int quantity = (int)row.ItemArray[3];
+                    decimal unitPrice = (decimal)row.ItemArray[4];
+                    decimal totalPrice = (decimal)row.ItemArray[5];
 
                     fileDataFromReport.Add(new ExcelReportViewModel
                     {
                         InvoiceTitle = title,
                         Producer = producer,
-                        Product = product
+                        Product = product,
+                        Department = dept,
+                        Quantity = quantity,
+                        UnitPrice = unitPrice,
+                        TotalPrice = totalPrice
                     });
                 }
             }
