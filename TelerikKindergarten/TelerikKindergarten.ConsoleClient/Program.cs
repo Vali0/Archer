@@ -12,6 +12,7 @@
     using TelerikKindergarten.MySQL.Data;
     using TelerikKindergarten.ReportModels;
     using Telerik.OpenAccess;
+    using TelerikKindergarten.SQLite.Data;
 
     public class Program
     {
