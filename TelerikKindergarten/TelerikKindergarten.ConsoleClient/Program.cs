@@ -18,18 +18,13 @@
     {
         public static void Main(string[] args)
         {
-<<<<<<< HEAD
             SQLiteManipulations();
 
             Console.WriteLine("SQLite finished");
             Console.ReadKey();
             Environment.Exit(0);
             //UpdateMySql();
-
-
-=======
             //UpdateMySql();
->>>>>>> 2f7a8c150182223f659bc29099581f7574306c94
 
             //var employee = new Employee() { FirstName = "Ivancho" };
             var context = new TelerikKindergartenData();
@@ -107,7 +102,6 @@
             //    });
             //}
 
-<<<<<<< HEAD
             foreach (var department in departmentsForTransfer)
             {
 
@@ -158,7 +152,7 @@
                     Name = producer.Name
                 });
             }
-=======
+
             //foreach (var department in departmentsForTransfer)
             //{
 
@@ -208,7 +202,6 @@
             //        Name = producer.Name
             //    });
             //}
->>>>>>> 2f7a8c150182223f659bc29099581f7574306c94
 
             context.SaveChanges();
         }
