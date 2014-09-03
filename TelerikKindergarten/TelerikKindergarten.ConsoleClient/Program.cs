@@ -26,11 +26,18 @@
             var server = client.GetServer();
             var database = server.GetDatabase("test");
             //SeedData.SeedMongoDb(mongoConnectionString); // Uncomment to seed mongodb
-            
+
             // Load Excel Reports from ZIP File
             //var importedExcelReports = ExcelManipulator.Import();
+
+            //Initialize MySQL
+            var mySqlContext = new TelerikKindergartenMySQLModel();
+            var schemaHandler = mySqlContext.GetSchemaHandler();
+            MySqlUtilities.EnsureDB(schemaHandler);
+
             // import to sql :
 
+            var sqlContext = new TelerikKindergartenData();
             //SqlManipulator.AddExcelReports(importedExcelReports, sqlContext);
             // Generate PDF Reports
             //var pdfReportsFromSql = SqlManipulator.GetPdfReportsData(sqlContext);
@@ -41,22 +48,27 @@
             //XmlManipulator.GenerateReport(xmlReportsFromSql);
 
             // JSON Reports
-            //JsonManipulator.GenerateReport();
+            var jsonReportsFromSql = SqlManipulator.GetJsonReportsData(sqlContext);
+            JsonManipulator.GenerateReports(jsonReportsFromSql);
 
+            var jsonReportsFromFiles = JsonManipulator.GetJsonReportsFromFiles();
+
+            MySqlManipulator.AddJsonReports(jsonReportsFromFiles, mySqlContext);
             // Load data from XML
-            //XmlManipulator.LoadData();
+            var loadedXmlReports = XmlManipulator.LoadReportsFromFiles();
 
+            SqlManipulator.AddXmlReports(loadedXmlReports, sqlContext);
+            SeedData.AddXmlReports(loadedXmlReports, database);
             // Excel data
             //ExcelManipulator.Export();
 
-            
+            var reportsFromMySql = MySqlManipulator.GetReports(mySqlContext);
 
             // SQL seeding
-            var sqlContext = new TelerikKindergartenData();
             //SeedSql.SeedSqlWithData(sqlContext, database); // Uncomment to seed sql
 
             //UpdateMySql();
-        }        
+        }
 
         private static void UpdateMySql()
         {
