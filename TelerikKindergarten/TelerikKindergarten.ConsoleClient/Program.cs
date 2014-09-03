@@ -12,12 +12,18 @@
     using TelerikKindergarten.MySQL.Data;
     using TelerikKindergarten.ReportModels;
     using Telerik.OpenAccess;
+    using TelerikKindergarten.SQLite.Data;
 
     public class Program
     {
         public static void Main(string[] args)
         {
-            UpdateMySql();
+            SQLiteManipulations();
+
+            Console.WriteLine("SQLite finished");
+            Console.ReadKey();
+            Environment.Exit(0);
+            //UpdateMySql();
 
 
 
@@ -28,7 +34,7 @@
             //Mongodb seeding
             string mongoConnectionString = "mongodb://localhost";
 
-            //SeedMongoDb(mongoConnectionString);
+            SeedMongoDb(mongoConnectionString);
 
             //Get data from the base.
             var client = new MongoClient(mongoConnectionString);
@@ -60,56 +66,56 @@
 
 
 
-            //foreach (var department in departmentsForTransfer)
-            //{
+            foreach (var department in departmentsForTransfer)
+            {
 
-            //    context.Departments.Add(new Department()
-            //    {
-            //        Name = department.Name,
-            //        EmployeeId = department.EmployeeId,
-            //        //DepartmentHead = department.DepartmentHead
-            //    });
-            //}
+                context.Departments.Add(new Department()
+                {
+                    Name = department.Name,
+                    EmployeeId = department.EmployeeId,
+                    //DepartmentHead = department.DepartmentHead
+                });
+            }
 
-            //foreach (var employee in employeesForTransfer)
-            //{
-            //    context.Employees.Add(new Employee()
-            //    {
-            //        FirstName = employee.MiddleName,
-            //        MiddleName = employee.MiddleName,
-            //        LastName = employee.MiddleName
-            //    });
-            //}
+            foreach (var employee in employeesForTransfer)
+            {
+                context.Employees.Add(new Employee()
+                {
+                    FirstName = employee.MiddleName,
+                    MiddleName = employee.MiddleName,
+                    LastName = employee.MiddleName
+                });
+            }
 
-            //foreach (var group in groupsForTransfer)
-            //{
-            //    context.Groups.Add(new Group()
-            //    {
-            //        Name = group.Name,
-            //        Notes = group.Notes,
-            //        //SupervisorID = 1
-            //    });
-            //}
+            foreach (var group in groupsForTransfer)
+            {
+                context.Groups.Add(new Group()
+                {
+                    Name = group.Name,
+                    Notes = group.Notes,
+                    //SupervisorID = 1
+                });
+            }
 
 
-            //foreach (var product in products)
-            //{
-            //    context.Products.Add(new Product()
-            //    {
-            //        Name = product.Name,
-            //        Price = product.Price,
-            //        Quantity = product.Quantity,
-            //        ProductId = product.Producer.ProducerId // Check why null
-            //    });
-            //}
+            foreach (var product in products)
+            {
+                context.Products.Add(new Product()
+                {
+                    Name = product.Name,
+                    Price = product.Price,
+                    Quantity = product.Quantity,
+                    ProductId = product.Producer.ProducerId // Check why null
+                });
+            }
 
-            //foreach (var producer in producersForTransfer)
-            //{
-            //    context.Producers.Add(new Producer()
-            //    {
-            //        Name = producer.Name
-            //    });
-            //}
+            foreach (var producer in producersForTransfer)
+            {
+                context.Producers.Add(new Producer()
+                {
+                    Name = producer.Name
+                });
+            }
 
             context.SaveChanges();
         }
@@ -240,6 +246,13 @@
                 //Console.WriteLine(context.Reports.Where(r => true).First().ProducerName);
 
             }
+        }
+
+        private static void SQLiteManipulations()
+        {
+            DietsDataContext diets = new DietsDataContext();
+            var diet = diets.Diets.First();
+            Console.WriteLine(diet.Menus.First().Dishes.First().Ingredients);
         }
     }
 }

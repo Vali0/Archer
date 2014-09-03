@@ -1,15 +1,35 @@
 ﻿namespace TelerikKindergarten.SQLite.Models
 {
     using System.Collections.Generic;
+    using System.ComponentModel.DataAnnotations;
 
     public class Menu
     {
-        public int MenuID { get; set; }
+        private ICollection<Dish> dishes;
+
+        public Menu()
+        {
+            this.dishes = new HashSet<Dish>();
+        }
+
+        [Key]
+        public long MenuID { get; set; }
 
         public string Description { get; set; }
+        
+        public long DietID { get; set; }
 
-        public virtual ICollection<Dish> Dishes { get; set; }
+        public virtual ICollection<Dish> Dishes
+        {
+            get
+            {
+                return this.dishes;
+            }
 
-        public virtual ICollection<Diet> Diets { get; set; }
+            set
+            {
+                this.dishes = value;
+            }
+        }
     }
 }

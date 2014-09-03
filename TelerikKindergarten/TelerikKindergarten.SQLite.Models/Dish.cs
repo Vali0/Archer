@@ -1,10 +1,12 @@
 ﻿namespace TelerikKindergarten.SQLite.Models
 {
     using System.Collections.Generic;
+    using System.ComponentModel.DataAnnotations;
 
     public class Dish
     {
-        public int DishID { get; set; }
+        [Key]
+        public long DishID { get; set; }
 
         public string Name { get; set; }
 
@@ -12,6 +14,6 @@
 
         public int Price { get; set; }
 
-        public virtual ICollection<Menu> Menus { get; set; }
+        public long MenuID { get; set; }
     }
 }

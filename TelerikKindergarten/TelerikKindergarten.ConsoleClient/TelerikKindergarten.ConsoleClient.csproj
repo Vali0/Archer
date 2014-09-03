@@ -49,6 +49,16 @@
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Data.SQLite, Version=1.0.93.0, Culture=neutral, PublicKeyToken=db937bc2d44ff139, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\System.Data.SQLite.Core.1.0.93.0\lib\net45\System.Data.SQLite.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Data.SQLite.EF6">
+      <HintPath>..\packages\System.Data.SQLite.EF6.1.0.93.0\lib\net45\System.Data.SQLite.EF6.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Data.SQLite.Linq">
+      <HintPath>..\packages\System.Data.SQLite.Linq.1.0.93.0\lib\net45\System.Data.SQLite.Linq.dll</HintPath>
+    </Reference>
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -86,6 +96,22 @@
       <Project>{bd869654-6bd6-4575-b041-c77d60bd3b40}</Project>
       <Name>TelerikKindergarten.SQL.Model</Name>
     </ProjectReference>
+    <ProjectReference Include="..\TelerikKindergarten.SQLite.Data\TelerikKindergarten.SQLite.Data.csproj">
+      <Project>{38647bf2-e943-4357-8181-bc9d7741e4c8}</Project>
+      <Name>TelerikKindergarten.SQLite.Data</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\TelerikKindergarten.SQLite.Models\TelerikKindergarten.SQLite.Models.csproj">
+      <Project>{970973a3-4d4c-40d9-9050-61765c26e5c9}</Project>
+      <Name>TelerikKindergarten.SQLite.Models</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="x64\SQLite.Interop.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="x86\SQLite.Interop.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
