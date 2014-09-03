@@ -7,7 +7,7 @@
     using TelerikKindergarten.Data;
     using TelerikKindergarten.SQL.Model;
 
-    public class SaveGroups
+    class SaveGroups
     {
         public static void SeedGroupsToSQL(TelerikKindergartenData context, MongoDatabase mongoContext)
         {

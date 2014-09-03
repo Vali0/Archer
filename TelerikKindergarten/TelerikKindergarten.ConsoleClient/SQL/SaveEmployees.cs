@@ -8,7 +8,7 @@
     using TelerikKindergarten.Data;
     using TelerikKindergarten.SQL.Model;
 
-    public class SaveEmployees
+    class SaveEmployees
     {
         public static void SeedEmployeesToSQL(TelerikKindergartenData context, MongoDatabase mongoContext)
         {

@@ -8,7 +8,7 @@
     using TelerikKindergarten.Data;
     using TelerikKindergarten.SQL.Model;
 
-    public class SaveAssets
+    class SaveAssets
     {
         public static void SeedAssetsToSQL(TelerikKindergartenData context, MongoDatabase mongoContext)
         {

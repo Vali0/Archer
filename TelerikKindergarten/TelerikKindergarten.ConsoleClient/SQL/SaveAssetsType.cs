@@ -10,7 +10,7 @@
     using TelerikKindergarten.Data;
     using TelerikKindergarten.SQL.Model;
 
-    public class SaveAssetsType
+    class SaveAssetsType
     {
         public static void SeedAssetTypesToSQL(TelerikKindergartenData context, MongoDatabase mongoContext)
         {

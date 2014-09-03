@@ -10,7 +10,7 @@
     using TelerikKindergarten.Data;
     using TelerikKindergarten.SQL.Model;
 
-    public class SaveDepartments
+    class SaveDepartments
     {
         public static void SeedDepartmentsToSQL(TelerikKindergartenData context, MongoDatabase mongoContext)
         {

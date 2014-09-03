@@ -7,10 +7,10 @@
     using MongoDB.Driver;
     using MongoDatabaseOperations;
 
-    public class SaveProducers
+    class SaveProducers
     {
 
-        public void SeedProducersToSQL(TelerikKindergartenData context, MongoDatabase mongoContext)
+        public static void SeedProducersToSQL(TelerikKindergartenData context, MongoDatabase mongoContext)
         {
             var producersForTransfer = GetData.GetProducersFromMongo(mongoContext);
 
