@@ -47,11 +47,41 @@ namespace TelerikKindergarten.ConsoleClient.MongoDatabaseOperations
             }
         }
 
+        private void SeedAssetTypes()
+        {
+            string[] assetTypesNames = {
+                                           "Toy(medium)",
+                                           "Toy(big)",
+                                           "Toy(small)",
+                                           "Lamp",
+                                           "Bucket",
+                                           "Lightbulb",
+                                           "Oven",
+                                           "Plate(small)",
+                                           "Plate(big)",
+                                           "Chair",
+                                           "Table",
+                                           "Broom",
+                                           "Cleaning solution",
+                                           "Pan",
+                                           "Utensils",
+                                           "Bowl",
+                                           "Carpet(big)"
+                                       };
+        }
+
         private static void SeedDepartments(MongoCollection<Department> departments)
         {
-            for (int indexOfDepartments = 0; indexOfDepartments < 5; indexOfDepartments++)
+            string[] deptNames = {
+                                    "Cooking",
+                                    "Cleaning",
+                                    "Children care",
+                                    "Maintenance"
+                                 };
+
+            for (int currentDept = 0; currentDept < deptNames.Length; currentDept++)
             {
-                var currentDepartment = new Department() { Name = "Dept." + indexOfDepartments };
+                var currentDepartment = new Department() { Name = deptNames[currentDept] };
                 currentDepartment.DepartmentHead = new Employee() { FirstName = "Department head of " + currentDepartment.Name };
 
                 for (int i = 0; i < 10; i++)
