@@ -86,7 +86,7 @@
 
             using (xlsConnection)
             {
-                OleDbCommand cmd = new OleDbCommand("CREATE TABLE [Sheet1] ([Product] string, [Producer] string, [Invoice] string, [Department] string, [Quantity] int, [UnitPrice] int, [TotalPrice] decimal)", xlsConnection);
+                OleDbCommand cmd = new OleDbCommand("CREATE TABLE [Sheet1] ([Product] string, [Producer] string, [Invoice] string, [Department] string, [Quantity] int, [UnitPrice] decimal, [TotalPrice] decimal)", xlsConnection);
                 cmd.ExecuteNonQuery();
 
                 foreach (var data in dataToExport)
