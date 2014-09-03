@@ -31,7 +31,8 @@
             PdfReporter.GenerateReport(pdfReportsFromSql);
 
             // Generate XML Report
-            XmlManipulator.GenerateReport();
+            var xmlReportsFromSql = SqlManipulator.GetXmlReportsData(sqlContext);
+            XmlManipulator.GenerateReport(xmlReportsFromSql);
 
             // JSON Reports
             JsonManipulator.GenerateReport();

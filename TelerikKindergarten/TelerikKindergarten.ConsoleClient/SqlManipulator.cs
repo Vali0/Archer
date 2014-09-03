@@ -19,5 +19,11 @@ using TelerikKindergarten.ReportModels;
         {
             throw new NotImplementedException();
         }
+
+        public static IEnumerable<XmlReportViewModel> GetXmlReportsData(ITelerikKindergartenData context)
+        {
+            throw new NotImplementedException();
+        }
+
     }
 }
