@@ -10,6 +10,8 @@
     using System.Threading.Tasks;
 
     using ReportModels;
+    using Newtonsoft.Json;
+    using System.IO;
 
     public class ExportReports
     {
@@ -20,7 +22,7 @@
             Section section = document.AddSection();
             var table = section.AddTable();
             table.Borders.Visible = true;
-            var rowHeader = table.AddRow(); 
+            var rowHeader = table.AddRow();
 
             for (int i = 0; i < 7; i++)
             {
@@ -54,6 +56,23 @@
             string filename = "kindergarden-demo.pdf";
             renderer.PdfDocument.Save(filename);
             Process.Start(filename);
+        }
+
+        public static void CreateJSONReport(IEnumerable<JSONReportViewModel> dataToExport, string pathToSaveReport)
+        {
+
+            JsonSerializer serializer = new JsonSerializer();
+
+            using (StreamWriter streamWriter = new StreamWriter(pathToSaveReport + "JsonReport.txt"))
+            {
+                using (JsonWriter writer = new JsonTextWriter(streamWriter))
+                {
+                    foreach (var data in dataToExport)
+                    {
+                        serializer.Serialize(writer, data);
+                    }
+                }
+            }
         }
     }
 }
