@@ -11,7 +11,7 @@
 
     public class SaveGroups
     {
-        public static void SeedGroupsToSql(TelerikKindergartenData context, MongoDatabase mongoContext)
+        public static void SeedGroupsToSql(ITelerikKindergartenData context, MongoDatabase mongoContext)
         {
             var groupsForTransfer = GetData.GetGroupsFromMongo(mongoContext);
 

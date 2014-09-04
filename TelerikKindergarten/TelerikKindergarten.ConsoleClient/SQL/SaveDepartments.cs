@@ -11,7 +11,7 @@
 
     public class SaveDepartments
     {
-        public static void SeedDepartmentsToSql(TelerikKindergartenData context, MongoDatabase mongoContext)
+        public static void SeedDepartmentsToSql(ITelerikKindergartenData context, MongoDatabase mongoContext)
         {
             var departmentsForTransfer = GetData.GetDepartmentsFromMongo(mongoContext);
 

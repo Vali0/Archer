@@ -9,7 +9,7 @@
 
     public class SeedSql
     {
-        public static void SeedSqlWithData(TelerikKindergartenData context, MongoDatabase mongoContext)
+        public static void SeedSqlWithData(ITelerikKindergartenData context, MongoDatabase mongoContext)
         {
             SaveAssetsType.SeedAssetTypesToSql(context, mongoContext);
             SaveAssets.SeedAssetsToSql(context, mongoContext);

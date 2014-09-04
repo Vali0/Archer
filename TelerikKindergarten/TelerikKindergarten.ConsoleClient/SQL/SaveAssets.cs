@@ -12,7 +12,7 @@
 
     public class SaveAssets
     {
-        public static void SeedAssetsToSql(TelerikKindergartenData context, MongoDatabase mongoContext)
+        public static void SeedAssetsToSql(ITelerikKindergartenData context, MongoDatabase mongoContext)
         {
             var departmentsForTransfer = GetData.GetDepartmentsFromMongo(mongoContext);
             var assetsForTransfer = AddAssets(departmentsForTransfer);

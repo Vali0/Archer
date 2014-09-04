@@ -12,7 +12,7 @@
     public class SaveProducers
     {
 
-        public static void SeedProducersToSql(TelerikKindergartenData context, MongoDatabase mongoContext)
+        public static void SeedProducersToSql(ITelerikKindergartenData context, MongoDatabase mongoContext)
         {
             var producersForTransfer = GetData.GetProducersFromMongo(mongoContext);
 

@@ -12,7 +12,7 @@
 
     public class SaveAssetsType
     {
-        public static void SeedAssetTypesToSql(TelerikKindergartenData context, MongoDatabase mongoContext)
+        public static void SeedAssetTypesToSql(ITelerikKindergartenData context, MongoDatabase mongoContext)
         {
             var departments = GetData.GetDepartmentsFromMongo(mongoContext);
             var assets = SaveAssets.AddAssets(departments);

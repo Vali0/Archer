@@ -12,7 +12,7 @@
 
     public class SaveEmployees
     {
-        public static void SeedEmployeesToSql(TelerikKindergartenData context, MongoDatabase mongoContext)
+        public static void SeedEmployeesToSql(ITelerikKindergartenData context, MongoDatabase mongoContext)
         {
             var departmentsForTransfer = GetData.GetDepartmentsFromMongo(mongoContext);
             var employeesForTransfer = AddEmployees(departmentsForTransfer);
