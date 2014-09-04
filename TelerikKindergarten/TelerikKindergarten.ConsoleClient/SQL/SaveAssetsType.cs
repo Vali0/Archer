@@ -14,7 +14,7 @@
     {
         public static void SeedAssetTypesToSql(ITelerikKindergartenData context, MongoDatabase mongoContext)
         {
-            var departments = GetData.GetDepartmentsFromMongo(mongoContext);
+            var departments = MongoGetManipulator.GetDepartments(mongoContext);
             var assets = SaveAssets.AddAssets(departments);
             var assetTypesForTransfer = AddAssetTypes(assets);
 

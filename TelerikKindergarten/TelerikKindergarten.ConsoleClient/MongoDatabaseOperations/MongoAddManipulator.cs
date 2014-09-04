@@ -9,7 +9,7 @@
     using TelerikKindergarten.ReportModels;
     using TelerikKindergarten.SQL.Model;
 
-    public static class SeedData
+    public static class MongoAddManipulator
     {
         private static string[] ASSET_TYPES_NAMES = {
                                            "Toy(medium)",
@@ -38,7 +38,7 @@
             reports.InsertBatch<XmlReportViewModel>(xmlReports);
         }
 
-        public static void SeedMongoDb(string connectionString)
+        public static void SeedDatabase(string connectionString)
         {
             var client = new MongoClient(connectionString);
             var server = client.GetServer();

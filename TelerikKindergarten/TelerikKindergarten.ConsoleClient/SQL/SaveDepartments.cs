@@ -13,7 +13,7 @@
     {
         public static void SeedDepartmentsToSql(ITelerikKindergartenData context, MongoDatabase mongoContext)
         {
-            var departmentsForTransfer = GetData.GetDepartmentsFromMongo(mongoContext);
+            var departmentsForTransfer = MongoGetManipulator.GetDepartments(mongoContext);
 
             foreach (var department in departmentsForTransfer)
             {

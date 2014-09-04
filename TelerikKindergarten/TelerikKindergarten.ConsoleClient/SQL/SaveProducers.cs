@@ -14,7 +14,7 @@
 
         public static void SeedProducersToSql(ITelerikKindergartenData context, MongoDatabase mongoContext)
         {
-            var producersForTransfer = GetData.GetProducersFromMongo(mongoContext);
+            var producersForTransfer = MongoGetManipulator.GetProducers(mongoContext);
 
             foreach (var producer in producersForTransfer)
             {

@@ -8,9 +8,9 @@
     using TelerikKindergarten.SQL.Model;
     using TelerikKindergarten.ReportModels;
 
-    public class GetData
+    public class MongoGetManipulator
     {
-        public static IQueryable<Producer> GetProducersFromMongo(MongoDatabase database)
+        public static IQueryable<Producer> GetProducers(MongoDatabase database)
         {
             var producers = database.GetCollection<Producer>("producers");
 
@@ -21,7 +21,7 @@
             return producersForTransfer;
         }
 
-        public static IQueryable<Department> GetDepartmentsFromMongo(MongoDatabase database)
+        public static IQueryable<Department> GetDepartments(MongoDatabase database)
         {
             var departments = database.GetCollection("departments");
             var departmentsForTransfer = departments.AsQueryable<Department>()
@@ -31,7 +31,7 @@
             return departmentsForTransfer;
         }
 
-        public static IQueryable<Group> GetGroupsFromMongo(MongoDatabase database)
+        public static IQueryable<Group> GetGroups(MongoDatabase database)
         {
             var groups = database.GetCollection<Group>("groups");
             var groupsForTransfer = groups.AsQueryable<Group>()
@@ -41,7 +41,7 @@
             return groupsForTransfer;
         }
 
-        public static IQueryable<XmlReportViewModel> GetReportsFromMongo(MongoDatabase database)
+        public static IQueryable<XmlReportViewModel> GetReports(MongoDatabase database)
         {
 
             var reports = database.GetCollection<XmlReportViewModel>("reports");

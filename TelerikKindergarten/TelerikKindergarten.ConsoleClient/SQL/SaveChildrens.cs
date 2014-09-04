@@ -16,7 +16,7 @@
     {
         public static void SeedChildrensToSql(ITelerikKindergartenData context, MongoDatabase mongoContext)
         {
-            var groupsForTransfer = GetData.GetGroupsFromMongo(mongoContext);
+            var groupsForTransfer = MongoGetManipulator.GetGroups(mongoContext);
             var childrenForTransfer = AddChildren(groupsForTransfer);
 
             foreach (var child in childrenForTransfer)

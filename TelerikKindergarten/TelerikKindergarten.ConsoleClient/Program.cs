@@ -70,7 +70,7 @@
                     var loadedXmlReports = xmlManipulator.LoadReportsFromFiles();
 
                     sqlManipulator.AddXmlReports(loadedXmlReports);
-                    SeedData.AddXmlReports(loadedXmlReports, database);
+                    MongoAddManipulator.AddXmlReports(loadedXmlReports, database);
                     // Excel data
 
                     var reportsFromMySql = mySqlManipulator.GetReports();

@@ -14,7 +14,7 @@
     {
         public static void SeedAssetsToSql(ITelerikKindergartenData context, MongoDatabase mongoContext)
         {
-            var departmentsForTransfer = GetData.GetDepartmentsFromMongo(mongoContext);
+            var departmentsForTransfer = MongoGetManipulator.GetDepartments(mongoContext);
             var assetsForTransfer = AddAssets(departmentsForTransfer);
 
             foreach (var asset in assetsForTransfer)

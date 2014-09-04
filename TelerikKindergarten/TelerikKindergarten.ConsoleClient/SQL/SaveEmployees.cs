@@ -14,7 +14,7 @@
     {
         public static void SeedEmployeesToSql(ITelerikKindergartenData context, MongoDatabase mongoContext)
         {
-            var departmentsForTransfer = GetData.GetDepartmentsFromMongo(mongoContext);
+            var departmentsForTransfer = MongoGetManipulator.GetDepartments(mongoContext);
             var employeesForTransfer = AddEmployees(departmentsForTransfer);
 
             foreach (var employee in employeesForTransfer)

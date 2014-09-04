@@ -70,8 +70,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ExcelManipulator.cs" />
-    <Compile Include="MongoDatabaseOperations\GetData.cs" />
-    <Compile Include="MongoDatabaseOperations\SeedData.cs" />
+    <Compile Include="MongoDatabaseOperations\MongoGetManipulator.cs" />
+    <Compile Include="MongoDatabaseOperations\MongoAddManipulator.cs" />
     <Compile Include="MySqlManipulator.cs" />
     <Compile Include="PdfReporter.cs" />
     <Compile Include="SqLiteManipulator.cs" />

@@ -13,7 +13,7 @@
     {
         public static void SeedGroupsToSql(ITelerikKindergartenData context, MongoDatabase mongoContext)
         {
-            var groupsForTransfer = GetData.GetGroupsFromMongo(mongoContext);
+            var groupsForTransfer = MongoGetManipulator.GetGroups(mongoContext);
 
             foreach (var group in groupsForTransfer)
             {
