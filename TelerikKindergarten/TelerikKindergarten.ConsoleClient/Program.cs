@@ -55,9 +55,11 @@
 
                     // JSON Reports
                     var jsonReportsFromSql = SqlManipulator.GetJsonReportsData(sqlContext);
-                    JsonManipulator.GenerateReports(jsonReportsFromSql);
 
-                    var jsonReportsFromFiles = JsonManipulator.GetJsonReportsFromFiles();
+                    var jsonManipulator = new JsonManipulator();
+                    jsonManipulator.GenerateReports(jsonReportsFromSql);
+
+                    var jsonReportsFromFiles = jsonManipulator.GetJsonReportsFromFiles();
 
                     MySqlManipulator.AddJsonReports(jsonReportsFromFiles, mySqlContext);
                     // Load data from XML

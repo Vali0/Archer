@@ -7,14 +7,14 @@
     using TelerikKindergarten.ReportModels;
     using TelerikKindergarten.ReportsManipulation;
 
-    public static class JsonManipulator
+    public class JsonManipulator
     {
-        public static void GenerateReports(IEnumerable<JsonReportViewModel> jsonReports)
+        public void GenerateReports(IEnumerable<JsonReportViewModel> jsonReports)
         {
             ExportReports.CreateJsonReport(jsonReports);
         }
 
-        public static IEnumerable<JsonReportViewModel> GetJsonReportsFromFiles()
+        public IEnumerable<JsonReportViewModel> GetJsonReportsFromFiles()
         {
             // TODO: Add GetJsonReportsFromFiles functionality.
             throw new NotImplementedException();
