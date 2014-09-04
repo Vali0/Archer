@@ -42,7 +42,12 @@
 
         public static void AddXmlReports(IEnumerable<XmlReportViewModel> loadedXmlReports, ITelerikKindergartenData sqlContext)
         {
-            throw new NotImplementedException();
+            foreach (var report in loadedXmlReports)
+	        {
+                sqlContext.Reports.Add(report);
+	        }
+
+            sqlContext.SaveChanges();
         }
     }
 }

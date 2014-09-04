@@ -3,6 +3,7 @@
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
 
+    using TelerikKindergarten.ReportModels;
     using TelerikKindergarten.SQL.Model;    
 
     public interface ITelerikKindergartenContext
@@ -22,6 +23,9 @@
         IDbSet<Producer> Producers { get; set; }
         
         IDbSet<Product> Products { get; set; }
+
+        IDbSet<XmlReportViewModel> Reports { get; set; }
+
 
         IDbSet<T> Set<T>() where T : class;
 

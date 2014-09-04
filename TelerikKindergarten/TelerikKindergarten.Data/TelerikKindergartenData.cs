@@ -4,6 +4,7 @@
     using System.Collections.Generic;
 
     using TelerikKindergarten.Data.Repositories;
+    using TelerikKindergarten.ReportModels;
     using TelerikKindergarten.SQL.Model;
 
     public class TelerikKindergartenData : ITelerikKindergartenData
@@ -11,7 +12,8 @@
         private ITelerikKindergartenContext context;
         private IDictionary<Type, object> repositories;
 
-        public TelerikKindergartenData() : this(new TelerikKindergartenSqlModel())
+        public TelerikKindergartenData()
+            : this(new TelerikKindergartenSqlModel())
         {
         }
 
@@ -72,7 +74,7 @@
             {
                 return this.GetRepository<Group>();
             }
-            
+
         }
 
         public IGenericRepository<Producer> Producers
@@ -88,6 +90,14 @@
             get
             {
                 return this.GetRepository<Product>();
+            }
+        }
+
+        public IGenericRepository<XmlReportViewModel> Reports
+        {
+            get
+            {
+                return this.GetRepository<XmlReportViewModel>();
             }
         }
 

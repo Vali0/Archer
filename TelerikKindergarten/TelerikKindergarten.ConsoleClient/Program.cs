@@ -32,45 +32,44 @@
                 //UpdateMySql();
 
                 // Initialize MSSQL
-                using (var sqlContext = new TelerikKindergartenData())
+                var sqlContext = new TelerikKindergartenData();
+                // SQL seeding
+                //SeedSql.SeedSqlWithData(sqlContext, database); // Uncomment to seed sql
+
+                // Load Excel Reports from ZIP File
+                var importedExcelReports = ExcelManipulator.Import();
+                SqlManipulator.AddExcelReports(importedExcelReports, sqlContext);
+
+                using (var sqLiteContext = new DietsDataContext())
                 {
-                    // SQL seeding
-                    //SeedSql.SeedSqlWithData(sqlContext, database); // Uncomment to seed sql
+                    //SqlManipulator.AddExcelReports(importedExcelReports, sqlContext);
+                    // Generate PDF Reports
+                    //var pdfReportsFromSql = SqlManipulator.GetPdfReportsData(sqlContext);
+                    //PdfReporter.GenerateReport(pdfReportsFromSql);
 
-                    // Load Excel Reports from ZIP File
-                    var importedExcelReports = ExcelManipulator.Import();
-                    SqlManipulator.AddExcelReports(importedExcelReports, sqlContext);
+                    // Generate XML Report
+                    //var xmlReportsFromSql = SqlManipulator.GetXmlReportsData(sqlContext);
+                    //XmlManipulator.GenerateReport(xmlReportsFromSql);
 
-                    using (var sqLiteContext = new DietsDataContext())
-                    {
-                        //SqlManipulator.AddExcelReports(importedExcelReports, sqlContext);
-                        // Generate PDF Reports
-                        //var pdfReportsFromSql = SqlManipulator.GetPdfReportsData(sqlContext);
-                        //PdfReporter.GenerateReport(pdfReportsFromSql);
+                    // JSON Reports
+                    var jsonReportsFromSql = SqlManipulator.GetJsonReportsData(sqlContext);
+                    JsonManipulator.GenerateReports(jsonReportsFromSql);
 
-                        // Generate XML Report
-                        //var xmlReportsFromSql = SqlManipulator.GetXmlReportsData(sqlContext);
-                        //XmlManipulator.GenerateReport(xmlReportsFromSql);
+                    var jsonReportsFromFiles = JsonManipulator.GetJsonReportsFromFiles();
 
-                        // JSON Reports
-                        var jsonReportsFromSql = SqlManipulator.GetJsonReportsData(sqlContext);
-                        JsonManipulator.GenerateReports(jsonReportsFromSql);
+                    //MySqlManipulator.AddJsonReports(jsonReportsFromFiles, mySqlContext);
+                    // Load data from XML
+                    var loadedXmlReports = XmlManipulator.LoadReportsFromFiles();
 
-                        var jsonReportsFromFiles = JsonManipulator.GetJsonReportsFromFiles();
+                    SqlManipulator.AddXmlReports(loadedXmlReports, sqlContext);
+                    SeedData.AddXmlReports(loadedXmlReports, database);
+                    // Excel data
+                    //ExcelManipulator.Export();
 
-                        //MySqlManipulator.AddJsonReports(jsonReportsFromFiles, mySqlContext);
-                        // Load data from XML
-                        var loadedXmlReports = XmlManipulator.LoadReportsFromFiles();
-
-                        SqlManipulator.AddXmlReports(loadedXmlReports, sqlContext);
-                        SeedData.AddXmlReports(loadedXmlReports, database);
-                        // Excel data
-                        //ExcelManipulator.Export();
-
-                        //var reportsFromMySql = MySqlManipulator.GetReports(mySqlContext);
-                        var foodReportsFromSqLite = SqLiteManipulator.GetFoodReports(sqLiteContext);
-                    }
+                    //var reportsFromMySql = MySqlManipulator.GetReports(mySqlContext);
+                    var foodReportsFromSqLite = SqLiteManipulator.GetFoodReports(sqLiteContext);
                 }
+
             }
         }
 

@@ -4,8 +4,10 @@ namespace TelerikKindergarten.Data
     using System.Data.Entity;
     using System.ComponentModel.DataAnnotations.Schema;
     using System.Linq;
+
     using TelerikKindergarten.Data.Migrations;
     using TelerikKindergarten.SQL.Model;
+    using TelerikKindergarten.ReportModels;
 
     public partial class TelerikKindergartenSqlModel : DbContext, ITelerikKindergartenContext
     {
@@ -16,15 +18,22 @@ namespace TelerikKindergarten.Data
         }
 
         public virtual IDbSet<Asset> Assets { get; set; }
+
         public virtual IDbSet<AssetType> AssetTypes { get; set; }
+
         public virtual IDbSet<Child> Children { get; set; }
+
         public virtual IDbSet<Department> Departments { get; set; }
+
         public virtual IDbSet<Employee> Employees { get; set; }
+
         public virtual IDbSet<Group> Groups { get; set; }
 
         public virtual IDbSet<Producer> Producers { get; set; }
 
         public virtual IDbSet<Product> Products { get; set; }
+
+        public virtual IDbSet<XmlReportViewModel> Reports { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {

@@ -3,8 +3,9 @@
     using System;
 
     using TelerikKindergarten.Data.Repositories;
+    using TelerikKindergarten.ReportModels;
     using TelerikKindergarten.SQL.Model;
-    
+
     public interface ITelerikKindergartenData
     {
         IGenericRepository<Asset> Assets { get; }
@@ -22,6 +23,8 @@
         IGenericRepository<Producer> Producers { get; }
 
         IGenericRepository<Product> Products { get; }
+
+        IGenericRepository<XmlReportViewModel> Reports { get; }
 
         void SaveChanges();
     }

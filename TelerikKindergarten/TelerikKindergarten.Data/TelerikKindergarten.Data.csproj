@@ -60,6 +60,10 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\TelerikKindergarten.ReportModels\TelerikKindergarten.ReportModels.csproj">
+      <Project>{2aba1941-b314-44e5-a2af-1512ac9dd450}</Project>
+      <Name>TelerikKindergarten.ReportModels</Name>
+    </ProjectReference>
     <ProjectReference Include="..\TelerikKindergarten.SQL.Model\TelerikKindergarten.SQL.Model.csproj">
       <Project>{bd869654-6bd6-4575-b041-c77d60bd3b40}</Project>
       <Name>TelerikKindergarten.SQL.Model</Name>
