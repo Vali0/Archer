@@ -54,7 +54,8 @@
 
                     // Generate XML Report
                     var xmlReportsFromSql = sqlManipulator.GetXmlReportsData();
-                    XmlManipulator.GenerateReport(xmlReportsFromSql);
+                    var xmlManipulator = new XmlManipulator();
+                    xmlManipulator.GenerateReport(xmlReportsFromSql);
 
                     // JSON Reports
                     var jsonReportsFromSql = sqlManipulator.GetJsonReportsData();
@@ -66,7 +67,7 @@
                     var mySqlManipulator = new MySqlManipulator(mySqlContext);
                     mySqlManipulator.AddJsonReports(jsonReportsFromFiles);
                     // Load data from XML
-                    var loadedXmlReports = XmlManipulator.LoadReportsFromFiles();
+                    var loadedXmlReports = xmlManipulator.LoadReportsFromFiles();
 
                     sqlManipulator.AddXmlReports(loadedXmlReports);
                     SeedData.AddXmlReports(loadedXmlReports, database);
@@ -94,13 +95,6 @@
                 //context.SaveChanges();
                 //Console.WriteLine(context.Reports.Where(r => true).First().ProducerName);
             }
-        }
-
-        private static void SQLiteManipulations()
-        {
-            DietsDataContext diets = new DietsDataContext();
-            var diet = diets.Diets.First();
-            Console.WriteLine(diet.Menus.First().Dishes.First().Ingredients);
         }
     }
 }
