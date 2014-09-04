@@ -32,7 +32,8 @@
 
         public static IEnumerable<XmlReportViewModel> GetXmlReportsData(ITelerikKindergartenData context)
         {
-            throw new NotImplementedException();
+            //TODO : Check if this is correct. XmlReportViewModel
+            return context.Reports.All();
         }
 
         public static IEnumerable<JsonReportViewModel> GetJsonReportsData(ITelerikKindergartenData context)
@@ -42,6 +43,7 @@
 
         public static void AddXmlReports(IEnumerable<XmlReportViewModel> loadedXmlReports, ITelerikKindergartenData sqlContext)
         {
+            //TODO : Check if this is correct. XmlReportViewModel
             foreach (var report in loadedXmlReports)
 	        {
                 sqlContext.Reports.Add(report);
