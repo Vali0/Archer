@@ -21,7 +21,7 @@
             //Get data from the base.
             var client = new MongoClient(mongoConnectionString);
             var server = client.GetServer();
-            var database = server.GetDatabase("test");
+            var database = server.GetDatabase("TelerikKindergarten");
             using (var mySqlContext = new TelerikKindergartenMySQLModel())
             {
                 var schemaHandler = mySqlContext.GetSchemaHandler();
