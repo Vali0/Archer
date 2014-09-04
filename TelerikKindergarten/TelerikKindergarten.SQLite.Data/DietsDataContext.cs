@@ -6,6 +6,7 @@
 
     public class DietsDataContext : DbContext
     {
+        //TODO : Why is this here?
         private const string CONNECTION_STRING = @"Data Source=..\..\..\..\Databases\Diets.db;Version=3;";
 
         public DbSet<Dish> Dishes { get; set; }

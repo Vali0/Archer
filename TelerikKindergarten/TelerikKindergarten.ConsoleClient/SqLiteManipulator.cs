@@ -11,6 +11,7 @@
     {
         public static IEnumerable<FoodReportViewModel> GetFoodReports(DietsDataContext context)
         {
+            // TODO: Add GetFoodReports functionality.
             throw new NotImplementedException();
         }
     }

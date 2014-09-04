@@ -15,6 +15,7 @@
     {
         public static void Main(string[] args)
         {
+            // TODO: Fix after all functionality has been fixed.
             //Mongodb seeding
             string mongoConnectionString = "mongodb://localhost";
             //Get data from the base.

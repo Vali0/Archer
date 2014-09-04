@@ -11,6 +11,7 @@
     {
         public static void GenerateReport(IEnumerable<XmlReportViewModel> xmlReports)
         {
+            // TODO: Add GenerateReport functionality for XmlManipulator
             throw new NotImplementedException();
         }
 

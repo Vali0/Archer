@@ -27,6 +27,7 @@
 
         public static IEnumerable<PdfReportViewModel> GetPdfReportsData(ITelerikKindergartenData context)
         {
+            // TODO: Add GetPdfReportsData functionality for SqlManipulator
             throw new NotImplementedException();
         }
 
@@ -38,6 +39,7 @@
 
         public static IEnumerable<JsonReportViewModel> GetJsonReportsData(ITelerikKindergartenData context)
         {
+            // TODO: Add GetJsonReportsData functionality for SqlManipulator
             throw new NotImplementedException();
         }
 

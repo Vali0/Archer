@@ -16,6 +16,7 @@
 
         public static IEnumerable<JsonReportViewModel> GetJsonReportsFromFiles()
         {
+            // TODO: Add GetJsonReportsFromFiles functionality.
             throw new NotImplementedException();
         }
     }
