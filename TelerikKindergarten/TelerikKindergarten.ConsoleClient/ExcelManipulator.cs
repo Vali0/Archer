@@ -7,14 +7,14 @@
     using TelerikKindergarten.ReportModels;
     using TelerikKindergarten.ReportsManipulation;
 
-    public static class ExcelManipulator
+    public class ExcelManipulator
     {
-        public static IEnumerable<ExcelReportViewModel> Import()
+        public IEnumerable<ExcelReportViewModel> Import()
         {
             return ImportReports.GetExcelReports();
         }
 
-        public static void ExportReports(IEnumerable<JsonReportViewModel> jsonReports, IEnumerable<FoodReportViewModel> foodReport)
+        public void ExportReports(IEnumerable<JsonReportViewModel> jsonReports, IEnumerable<FoodReportViewModel> foodReport)
         {
             // TODO: Add ExportReports functionality for final excel report.
             throw new NotImplementedException();

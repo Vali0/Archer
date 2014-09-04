@@ -38,19 +38,20 @@
                 //SeedSql.SeedSqlWithData(sqlContext, database); // Uncomment to seed sql
 
                 // Load Excel Reports from ZIP File
-                var importedExcelReports = ExcelManipulator.Import();
+                var excelManipulator = new ExcelManipulator();
+                var importedExcelReports = excelManipulator.Import();
                 SqlManipulator.AddExcelReports(importedExcelReports, sqlContext);
 
                 using (var sqLiteContext = new DietsDataContext())
                 {
-                    //SqlManipulator.AddExcelReports(importedExcelReports, sqlContext);
+                    SqlManipulator.AddExcelReports(importedExcelReports, sqlContext);
                     // Generate PDF Reports
-                    //var pdfReportsFromSql = SqlManipulator.GetPdfReportsData(sqlContext);
-                    //PdfReporter.GenerateReport(pdfReportsFromSql);
+                    var pdfReportsFromSql = SqlManipulator.GetPdfReportsData(sqlContext);
+                    PdfReporter.GenerateReport(pdfReportsFromSql);
 
                     // Generate XML Report
-                    //var xmlReportsFromSql = SqlManipulator.GetXmlReportsData(sqlContext);
-                    //XmlManipulator.GenerateReport(xmlReportsFromSql);
+                    var xmlReportsFromSql = SqlManipulator.GetXmlReportsData(sqlContext);
+                    XmlManipulator.GenerateReport(xmlReportsFromSql);
 
                     // JSON Reports
                     var jsonReportsFromSql = SqlManipulator.GetJsonReportsData(sqlContext);
@@ -58,17 +59,17 @@
 
                     var jsonReportsFromFiles = JsonManipulator.GetJsonReportsFromFiles();
 
-                    //MySqlManipulator.AddJsonReports(jsonReportsFromFiles, mySqlContext);
+                    MySqlManipulator.AddJsonReports(jsonReportsFromFiles, mySqlContext);
                     // Load data from XML
                     var loadedXmlReports = XmlManipulator.LoadReportsFromFiles();
 
                     SqlManipulator.AddXmlReports(loadedXmlReports, sqlContext);
                     SeedData.AddXmlReports(loadedXmlReports, database);
                     // Excel data
-                    //ExcelManipulator.Export();
 
-                    //var reportsFromMySql = MySqlManipulator.GetReports(mySqlContext);
+                    var reportsFromMySql = MySqlManipulator.GetReports(mySqlContext);
                     var foodReportsFromSqLite = SqLiteManipulator.GetFoodReports(sqLiteContext);
+                    excelManipulator.ExportReports(reportsFromMySql, foodReportsFromSqLite);
                 }
 
             }
