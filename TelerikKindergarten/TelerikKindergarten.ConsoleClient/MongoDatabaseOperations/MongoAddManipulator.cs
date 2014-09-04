@@ -9,9 +9,9 @@
     using TelerikKindergarten.ReportModels;
     using TelerikKindergarten.SQL.Model;
 
-    public static class MongoAddManipulator
+    public class MongoAddManipulator
     {
-        private static string[] ASSET_TYPES_NAMES = {
+        private string[] ASSET_TYPES_NAMES = {
                                            "Toy(medium)",
                                            "Toy(big)",
                                            "Toy(small)",
@@ -31,33 +31,36 @@
                                            "Carpet(big)"
                                        };
 
-        public static void AddXmlReports(IEnumerable<XmlReportViewModel> xmlReports, MongoDatabase mongoDatabase)
+        private MongoDatabase database;
+
+        public MongoAddManipulator(MongoDatabase database)
         {
-            var reports = mongoDatabase.GetCollection<XmlReportViewModel>("reports");
+            this.database = database;
+        }
+
+        public void AddXmlReports(IEnumerable<XmlReportViewModel> xmlReports)
+        {
+            var reports = this.database.GetCollection<XmlReportViewModel>("reports");
 
             reports.InsertBatch<XmlReportViewModel>(xmlReports);
         }
 
-        public static void SeedDatabase(string connectionString)
+        public void SeedDatabase()
         {
-            var client = new MongoClient(connectionString);
-            var server = client.GetServer();
-            var database = server.GetDatabase("test");
-
-            var producers = database.GetCollection<Producer>("producers");
+            var producers = this.database.GetCollection<Producer>("producers");
             producers.RemoveAll();
             SeedProducers(producers);
 
-            var departments = database.GetCollection<Department>("departments");
+            var departments = this.database.GetCollection<Department>("departments");
             departments.RemoveAll();
             SeedDepartments(departments);
 
-            var groups = database.GetCollection<Group>("groups");
+            var groups = this.database.GetCollection<Group>("groups");
             groups.RemoveAll();
             SeedGroups(groups);
         }
 
-        private static void SeedGroups(MongoCollection<Group> groups)
+        private void SeedGroups(MongoCollection<Group> groups)
         {
             for (int indexOfGroups = 0; indexOfGroups < 20; indexOfGroups++)
             {
@@ -75,7 +78,7 @@
             }
         }
 
-        private static void SeedDepartments(MongoCollection<Department> departments)
+        private void SeedDepartments(MongoCollection<Department> departments)
         {
             string[] deptNames = new string []{
                                     "Cooking",
@@ -105,7 +108,7 @@
             }
         }
 
-        private static void SeedProducers(MongoCollection<Producer> producers)
+        private void SeedProducers(MongoCollection<Producer> producers)
         {
             for (int indexOfProducers = 0; indexOfProducers < 20; indexOfProducers++)
             {
