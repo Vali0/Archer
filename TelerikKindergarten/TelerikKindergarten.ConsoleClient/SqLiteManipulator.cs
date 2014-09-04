@@ -17,8 +17,21 @@
         }
         public IEnumerable<FoodReportViewModel> GetFoodReports(DietsDataContext context)
         {
-            // TODO: Add GetFoodReports functionality.
-            throw new NotImplementedException();
+            var diets = context.Diets.Where(x => true);
+            var reports = new List<FoodReportViewModel>();
+
+            foreach (var item in diets)
+            {
+                var foodReport = new FoodReportViewModel()
+                {
+                    DietName = item.Description,
+                    MenuName = item.Menus.First().Description
+                };
+
+                reports.Add(foodReport);
+            }
+
+            return reports;
         }
     }
 }
