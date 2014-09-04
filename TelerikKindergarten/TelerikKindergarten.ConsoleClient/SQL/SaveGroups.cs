@@ -9,9 +9,9 @@
     using TelerikKindergarten.Data;
     using TelerikKindergarten.SQL.Model;
 
-    class SaveGroups
+    public class SaveGroups
     {
-        public static void SeedGroupsToSQL(TelerikKindergartenData context, MongoDatabase mongoContext)
+        public static void SeedGroupsToSql(TelerikKindergartenData context, MongoDatabase mongoContext)
         {
             var groupsForTransfer = GetData.GetGroupsFromMongo(mongoContext);
 

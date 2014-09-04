@@ -9,10 +9,10 @@
     using TelerikKindergarten.SQL.Model;
     using TelerikKindergarten.Data;
 
-    class SaveProducers
+    public class SaveProducers
     {
 
-        public static void SeedProducersToSQL(TelerikKindergartenData context, MongoDatabase mongoContext)
+        public static void SeedProducersToSql(TelerikKindergartenData context, MongoDatabase mongoContext)
         {
             var producersForTransfer = GetData.GetProducersFromMongo(mongoContext);
 

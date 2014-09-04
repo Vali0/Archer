@@ -9,9 +9,9 @@
     using TelerikKindergarten.Data;
     using TelerikKindergarten.SQL.Model;
 
-    class SaveDepartments
+    public class SaveDepartments
     {
-        public static void SeedDepartmentsToSQL(TelerikKindergartenData context, MongoDatabase mongoContext)
+        public static void SeedDepartmentsToSql(TelerikKindergartenData context, MongoDatabase mongoContext)
         {
             var departmentsForTransfer = GetData.GetDepartmentsFromMongo(mongoContext);
 

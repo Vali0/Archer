@@ -11,14 +11,14 @@
     {
         public static void SeedSqlWithData(TelerikKindergartenData context, MongoDatabase mongoContext)
         {
-            SaveAssetsType.SeedAssetTypesToSQL(context, mongoContext);
-            SaveAssets.SeedAssetsToSQL(context, mongoContext);
-            SaveDepartments.SeedDepartmentsToSQL(context, mongoContext);
-            SaveEmployees.SeedEmployeesToSQL(context, mongoContext);
-            SaveGroups.SeedGroupsToSQL(context, mongoContext);
-            SaveChildrens.SeedChildrensToSQL(context, mongoContext);
-            SaveProducers.SeedProducersToSQL(context, mongoContext);
-            SaveProducts.SeedProductsToSQL(context, mongoContext);
+            SaveAssetsType.SeedAssetTypesToSql(context, mongoContext);
+            SaveAssets.SeedAssetsToSql(context, mongoContext);
+            SaveDepartments.SeedDepartmentsToSql(context, mongoContext);
+            SaveEmployees.SeedEmployeesToSql(context, mongoContext);
+            SaveGroups.SeedGroupsToSql(context, mongoContext);
+            SaveChildrens.SeedChildrensToSql(context, mongoContext);
+            SaveProducers.SeedProducersToSql(context, mongoContext);
+            SaveProducts.SeedProductsToSql(context, mongoContext);
         }
     }
 }

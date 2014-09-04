@@ -10,9 +10,9 @@
     using TelerikKindergarten.Data;
     using TelerikKindergarten.SQL.Model;
 
-    class SaveEmployees
+    public class SaveEmployees
     {
-        public static void SeedEmployeesToSQL(TelerikKindergartenData context, MongoDatabase mongoContext)
+        public static void SeedEmployeesToSql(TelerikKindergartenData context, MongoDatabase mongoContext)
         {
             var departmentsForTransfer = GetData.GetDepartmentsFromMongo(mongoContext);
             var employeesForTransfer = AddEmployees(departmentsForTransfer);

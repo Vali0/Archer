@@ -10,14 +10,14 @@
     using TelerikKindergarten.Data;
     using TelerikKindergarten.SQL.Model;
 
-    class SaveAssetsType
+    public class SaveAssetsType
     {
-        public static void SeedAssetTypesToSQL(TelerikKindergartenData context, MongoDatabase mongoContext)
+        public static void SeedAssetTypesToSql(TelerikKindergartenData context, MongoDatabase mongoContext)
         {
             var departments = GetData.GetDepartmentsFromMongo(mongoContext);
             var assets = SaveAssets.AddAssets(departments);
             var assetTypesForTransfer = AddAssetTypes(assets);
-            
+
             foreach (var assetType in assetTypesForTransfer)
             {
                 context.AssetTypes.Add(new AssetType()
