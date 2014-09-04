@@ -60,7 +60,7 @@
 
         public static void CreateJsonReport(IEnumerable<JsonReportViewModel> dataToExport, string pathToSaveReport = "../../JsonReports")
         {
-
+            // TOOO: Fix this, its not as it should be in the task!
             JsonSerializer serializer = new JsonSerializer();
 
             using (StreamWriter streamWriter = new StreamWriter(pathToSaveReport + "JsonReport.txt"))
