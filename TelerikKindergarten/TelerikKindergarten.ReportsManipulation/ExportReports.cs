@@ -58,18 +58,17 @@
             Process.Start(filename);
         }
 
-        public static void CreateJsonReport(IEnumerable<JsonReportViewModel> dataToExport, string pathToSaveReport = "../../JsonReports")
+        public static void CreateJsonReport(IEnumerable<JsonReportViewModel> reports, string pathToSaveReport = "../../JsonReports")
         {
-            // TOOO: Fix this, its not as it should be in the task!
             JsonSerializer serializer = new JsonSerializer();
 
-            using (StreamWriter streamWriter = new StreamWriter(pathToSaveReport + "JsonReport.txt"))
+            foreach (var report in reports)
             {
-                using (JsonWriter writer = new JsonTextWriter(streamWriter))
+                using (StreamWriter streamWriter = new StreamWriter(pathToSaveReport + report.Id + ".json"))
                 {
-                    foreach (var data in dataToExport)
+                    using (JsonWriter writer = new JsonTextWriter(streamWriter))
                     {
-                        serializer.Serialize(writer, data);
+                        serializer.Serialize(writer, report);
                     }
                 }
             }
