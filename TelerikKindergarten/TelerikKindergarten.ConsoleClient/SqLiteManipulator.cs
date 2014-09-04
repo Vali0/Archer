@@ -7,9 +7,15 @@
     using TelerikKindergarten.ReportModels;
     using TelerikKindergarten.SQLite.Data;
 
-    public static class SqLiteManipulator
+    public class SqLiteManipulator
     {
-        public static IEnumerable<FoodReportViewModel> GetFoodReports(DietsDataContext context)
+        private DietsDataContext sqLiteContext;
+
+        public SqLiteManipulator(DietsDataContext sqLiteContext)
+        {
+            this.sqLiteContext = sqLiteContext;
+        }
+        public IEnumerable<FoodReportViewModel> GetFoodReports(DietsDataContext context)
         {
             // TODO: Add GetFoodReports functionality.
             throw new NotImplementedException();

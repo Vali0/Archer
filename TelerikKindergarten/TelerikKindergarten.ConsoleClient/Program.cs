@@ -71,7 +71,9 @@
                     // Excel data
 
                     var reportsFromMySql = mySqlManipulator.GetReports();
-                    var foodReportsFromSqLite = SqLiteManipulator.GetFoodReports(sqLiteContext);
+
+                    var sqLiteManipulator = new SqLiteManipulator(sqLiteContext);
+                    var foodReportsFromSqLite = sqLiteManipulator.GetFoodReports(sqLiteContext);
                     excelManipulator.ExportReports(reportsFromMySql, foodReportsFromSqLite);
                 }
 
