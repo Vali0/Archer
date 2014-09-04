@@ -60,8 +60,8 @@
                     jsonManipulator.GenerateReports(jsonReportsFromSql);
 
                     var jsonReportsFromFiles = jsonManipulator.GetJsonReportsFromFiles();
-
-                    MySqlManipulator.AddJsonReports(jsonReportsFromFiles, mySqlContext);
+                    var mySqlManipulator = new MySqlManipulator(mySqlContext);
+                    mySqlManipulator.AddJsonReports(jsonReportsFromFiles);
                     // Load data from XML
                     var loadedXmlReports = XmlManipulator.LoadReportsFromFiles();
 
@@ -69,7 +69,7 @@
                     SeedData.AddXmlReports(loadedXmlReports, database);
                     // Excel data
 
-                    var reportsFromMySql = MySqlManipulator.GetReports(mySqlContext);
+                    var reportsFromMySql = mySqlManipulator.GetReports();
                     var foodReportsFromSqLite = SqLiteManipulator.GetFoodReports(sqLiteContext);
                     excelManipulator.ExportReports(reportsFromMySql, foodReportsFromSqLite);
                 }

@@ -7,17 +7,24 @@
     using TelerikKindergarten.MySQL.Data;
     using TelerikKindergarten.ReportModels;
 
-    public static class MySqlManipulator
+    public class MySqlManipulator
     {
-        public static void AddJsonReports(IEnumerable<JsonReportViewModel> jsonReportsFromFiles, TelerikKindergartenMySQLModel context)
+        private TelerikKindergartenMySQLModel context;
+
+        public MySqlManipulator(TelerikKindergartenMySQLModel mySqlContext)
         {
-            context.Add(jsonReportsFromFiles);
-            context.SaveChanges();
+            this.context = mySqlContext;
         }
 
-        public static IEnumerable<JsonReportViewModel> GetReports(TelerikKindergartenMySQLModel context)
+        public void AddJsonReports(IEnumerable<JsonReportViewModel> jsonReportsFromFiles)
         {
-            var reports = context.Reports.ToList();
+            this.context.Add(jsonReportsFromFiles);
+            this.context.SaveChanges();
+        }
+
+        public IEnumerable<JsonReportViewModel> GetReports()
+        {
+            var reports = this.context.Reports.ToList();
 
             return reports;
         }
