@@ -8,50 +8,57 @@
     using TelerikKindergarten.ReportModels;
     using TelerikKindergarten.SQL.Model;
 
-    public static class SqlManipulator
+    public class SqlManipulator
     {
-        public static void AddExcelReports(IEnumerable<ExcelReportViewModel> reports, ITelerikKindergartenData context)
+        private ITelerikKindergartenData context;
+
+        public SqlManipulator(ITelerikKindergartenData sqlContext)
+        {
+            this.context = sqlContext;
+        }
+
+        public void AddExcelReports(IEnumerable<ExcelReportViewModel> reports)
         {
             foreach (var report in reports)
             {
                 var newAsset = new Asset();
-                newAsset.AssetType = context.AssetTypes.SearchFor(x => x.Name == report.Product).First();
-                newAsset.Department = context.Departments.SearchFor(x => x.Name == report.Department).First();
+                newAsset.AssetType = this.context.AssetTypes.SearchFor(x => x.Name == report.Product).First();
+                newAsset.Department = this.context.Departments.SearchFor(x => x.Name == report.Department).First();
                 newAsset.Value = report.TotalPrice;
 
-                context.Assets.Add(newAsset);
+                this.context.Assets.Add(newAsset);
             }
 
-            context.SaveChanges();
+            this.context.SaveChanges();
         }
 
-        public static IEnumerable<PdfReportViewModel> GetPdfReportsData(ITelerikKindergartenData context)
+        public IEnumerable<PdfReportViewModel> GetPdfReportsData()
         {
             // TODO: Add GetPdfReportsData functionality for SqlManipulator
             throw new NotImplementedException();
         }
 
-        public static IEnumerable<XmlReportViewModel> GetXmlReportsData(ITelerikKindergartenData context)
+        public IEnumerable<XmlReportViewModel> GetXmlReportsData()
         {
             //TODO : Check if this is correct. XmlReportViewModel
-            return context.Reports.All();
+            return this.context.Reports.All();
         }
 
-        public static IEnumerable<JsonReportViewModel> GetJsonReportsData(ITelerikKindergartenData context)
+        public IEnumerable<JsonReportViewModel> GetJsonReportsData()
         {
             // TODO: Add GetJsonReportsData functionality for SqlManipulator
             throw new NotImplementedException();
         }
 
-        public static void AddXmlReports(IEnumerable<XmlReportViewModel> loadedXmlReports, ITelerikKindergartenData sqlContext)
+        public void AddXmlReports(IEnumerable<XmlReportViewModel> loadedXmlReports)
         {
             //TODO : Check if this is correct. XmlReportViewModel
             foreach (var report in loadedXmlReports)
 	        {
-                sqlContext.Reports.Add(report);
+                this.context.Reports.Add(report);
 	        }
 
-            sqlContext.SaveChanges();
+            this.context.SaveChanges();
         }
     }
 }

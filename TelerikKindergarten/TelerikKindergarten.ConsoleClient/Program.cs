@@ -40,22 +40,24 @@
                 // Load Excel Reports from ZIP File
                 var excelManipulator = new ExcelManipulator();
                 var importedExcelReports = excelManipulator.Import();
-                SqlManipulator.AddExcelReports(importedExcelReports, sqlContext);
+
+                var sqlManipulator = new SqlManipulator(sqlContext);
+                sqlManipulator.AddExcelReports(importedExcelReports);
 
                 using (var sqLiteContext = new DietsDataContext())
                 {
-                    SqlManipulator.AddExcelReports(importedExcelReports, sqlContext);
+                    sqlManipulator.AddExcelReports(importedExcelReports);
                     // Generate PDF Reports
-                    var pdfReportsFromSql = SqlManipulator.GetPdfReportsData(sqlContext);
+                    var pdfReportsFromSql = sqlManipulator.GetPdfReportsData();
                     var pdfManipulator = new PdfManipulator();
                     pdfManipulator.GenerateReport(pdfReportsFromSql);
 
                     // Generate XML Report
-                    var xmlReportsFromSql = SqlManipulator.GetXmlReportsData(sqlContext);
+                    var xmlReportsFromSql = sqlManipulator.GetXmlReportsData();
                     XmlManipulator.GenerateReport(xmlReportsFromSql);
 
                     // JSON Reports
-                    var jsonReportsFromSql = SqlManipulator.GetJsonReportsData(sqlContext);
+                    var jsonReportsFromSql = sqlManipulator.GetJsonReportsData();
 
                     var jsonManipulator = new JsonManipulator();
                     jsonManipulator.GenerateReports(jsonReportsFromSql);
@@ -66,7 +68,7 @@
                     // Load data from XML
                     var loadedXmlReports = XmlManipulator.LoadReportsFromFiles();
 
-                    SqlManipulator.AddXmlReports(loadedXmlReports, sqlContext);
+                    sqlManipulator.AddXmlReports(loadedXmlReports);
                     SeedData.AddXmlReports(loadedXmlReports, database);
                     // Excel data
 
