@@ -8,6 +8,7 @@
 
     using TelerikKindergarten.ReportModels;
     using TelerikKindergarten.SQL.Model;
+
     public static class SeedData
     {
         private static string[] ASSET_TYPES_NAMES = {

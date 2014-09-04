@@ -6,8 +6,9 @@
     using MongoDB.Driver.Linq;
 
     using TelerikKindergarten.SQL.Model;
+    using TelerikKindergarten.ReportModels;
 
-   public class GetData
+    public class GetData
     {
         public static IQueryable<Producer> GetProducersFromMongo(MongoDatabase database)
         {
@@ -38,6 +39,15 @@
                                           .OrderBy(ch => ch.Name);
 
             return groupsForTransfer;
+        }
+
+        public static IQueryable<XmlReportViewModel> GetReportsFromMongo(MongoDatabase database)
+        {
+
+            var reports = database.GetCollection<XmlReportViewModel>("reports");
+
+            return reports.AsQueryable<XmlReportViewModel>()
+                .Where(r => true).OrderBy(x => x.Producer);
         }
     }
 }
