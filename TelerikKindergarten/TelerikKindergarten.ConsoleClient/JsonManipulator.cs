@@ -13,11 +13,5 @@
         {
             ExportReports.CreateJsonReport(jsonReports);
         }
-
-        public IEnumerable<JsonReportViewModel> GetJsonReportsFromFiles()
-        {
-            // TODO: Add GetJsonReportsFromFiles functionality.
-            throw new NotImplementedException();
-        }
     }
 }

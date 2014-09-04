@@ -27,15 +27,17 @@
                 var schemaHandler = mySqlContext.GetSchemaHandler();
                 MySqlUtilities.EnsureDB(schemaHandler);
 
-                //SeedData.SeedMongoDb(mongoConnectionString); // Uncomment to seed mongodb
+                var mongoAddManipulator = new MongoAddManipulator(database);
+
+                // Uncomment to seed mongodb
+                mongoAddManipulator.SeedDatabase(); 
 
 
-                //UpdateMySql();
 
                 // Initialize MSSQL
                 var sqlContext = new TelerikKindergartenData();
                 // SQL seeding
-                //SeedSql.SeedSqlWithData(sqlContext, database); // Uncomment to seed sql
+                SeedSql.SeedSqlWithData(sqlContext, database);
 
                 // Load Excel Reports from ZIP File
                 var excelManipulator = new ExcelManipulator();
@@ -63,16 +65,16 @@
                     var jsonManipulator = new JsonManipulator();
                     jsonManipulator.GenerateReports(jsonReportsFromSql);
 
-                    var jsonReportsFromFiles = jsonManipulator.GetJsonReportsFromFiles();
+                    // var jsonReportsFromFiles = jsonManipulator.GetJsonReportsFromFiles();
                     var mySqlManipulator = new MySqlManipulator(mySqlContext);
-                    mySqlManipulator.AddJsonReports(jsonReportsFromFiles);
+                    mySqlManipulator.AddJsonReports(jsonReportsFromSql);
                     // Load data from XML
                     var loadedXmlReports = xmlManipulator.LoadReportsFromFiles();
 
                     sqlManipulator.AddXmlReports(loadedXmlReports);
 
-                    var mongoAddManipulator = new MongoAddManipulator(database);
                     mongoAddManipulator.AddXmlReports(loadedXmlReports);
+
                     // Excel data
 
                     var reportsFromMySql = mySqlManipulator.GetReports();

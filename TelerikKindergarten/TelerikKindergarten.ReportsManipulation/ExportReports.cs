@@ -89,9 +89,7 @@
 
                 foreach (var data in dataToExport)
                 {
-                    OleDbCommand command = new OleDbCommand(
-                        "INSERT INTO [Sheet1$] (Product, Producer, Invoice, Department, Quantity, UnitPrice, TotalPrice) " +
-                                       "VALUES(@product, @producer, @invoice, @department, @quantity, @unitPrice, @totalPrice)", xlsConnection);
+                    OleDbCommand command = new OleDbCommand("INSERT INTO [Sheet1$] (Product, Producer, Invoice, Department, Quantity, UnitPrice, TotalPrice) " + "VALUES(@product, @producer, @invoice, @department, @quantity, @unitPrice, @totalPrice)", xlsConnection);
 
                     command.Parameters.AddWithValue("@product", data.Product);
                     command.Parameters.AddWithValue("@producer", data.Producer);
@@ -102,10 +100,8 @@
                     command.Parameters.AddWithValue("@totalPrice", data.TotalPrice);
 
                     command.ExecuteNonQuery();
-
                 }
             }
         }
-
     }
 }

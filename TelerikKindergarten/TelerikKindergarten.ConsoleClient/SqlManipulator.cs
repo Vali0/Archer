@@ -40,7 +40,6 @@
 
         public IEnumerable<XmlReportViewModel> GetXmlReportsData()
         {
-            //TODO : Check if this is correct. XmlReportViewModel
             return this.context.Reports.All();
         }
 
@@ -52,7 +51,6 @@
 
         public void AddXmlReports(IEnumerable<XmlReportViewModel> loadedXmlReports)
         {
-            //TODO : Check if this is correct. XmlReportViewModel
             foreach (var report in loadedXmlReports)
 	        {
                 this.context.Reports.Add(report);

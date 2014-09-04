@@ -111,7 +111,7 @@
             return fileDataFromReport;
         }
 
-        public static IEnumerable<XmlReportViewModel> GetXmlFromFile(string filePath = "") //TODO: Fix the path!
+        public static IEnumerable<XmlReportViewModel> GetXmlFromFile(string filePath = "../../../../AdditionalXmlReport") //TODO: Fix the path!
         {
             var collection = new List<XmlReportViewModel>();
             var serializer = new XmlSerializer(collection.GetType());
@@ -121,6 +121,5 @@
                 return serializer.Deserialize(reader) as List<XmlReportViewModel>;
             }
         }
-
     }
 }
