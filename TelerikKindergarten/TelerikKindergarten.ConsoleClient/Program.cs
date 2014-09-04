@@ -47,7 +47,8 @@
                     SqlManipulator.AddExcelReports(importedExcelReports, sqlContext);
                     // Generate PDF Reports
                     var pdfReportsFromSql = SqlManipulator.GetPdfReportsData(sqlContext);
-                    PdfReporter.GenerateReport(pdfReportsFromSql);
+                    var pdfManipulator = new PdfManipulator();
+                    pdfManipulator.GenerateReport(pdfReportsFromSql);
 
                     // Generate XML Report
                     var xmlReportsFromSql = SqlManipulator.GetXmlReportsData(sqlContext);

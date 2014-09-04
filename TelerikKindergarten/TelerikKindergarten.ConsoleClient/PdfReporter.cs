@@ -7,9 +7,9 @@
     using TelerikKindergarten.ReportModels;
     using TelerikKindergarten.ReportsManipulation;
 
-    public static class PdfReporter
+    public class PdfManipulator
     {
-        public static void GenerateReport(IEnumerable<PdfReportViewModel> pdfReports)
+        public void GenerateReport(IEnumerable<PdfReportViewModel> pdfReports)
         {
             ExportReports.CreatePdfReport(pdfReports);
         }
